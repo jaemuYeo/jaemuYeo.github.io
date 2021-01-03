@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dirt" #"default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -98,8 +98,6 @@ author:
   bio              : "ios공부와 프로젝트, 회고정리를 위한<br> 블로그입니다 <br> 꾸준히 공부하는 개발자입니다."
   location         : "Republic of Korea"
   email            : "jemking94@gmail.com"
-  github           : "https://github.com/jaemuYeo"
-  instagram        : "https://www.instagram.com/jjemking/"
   
   links:
     - label: "Email"
@@ -111,7 +109,7 @@ author:
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
-    - label: "GitHub"
+    - label: "github"
       icon: "fab fa-fw fa-github"
       # url: "https://github.com/jaemuYeo"
     - label: "Instagram"
@@ -120,9 +118,6 @@ author:
 
 # Site Footer
 footer:
-  github: "https://github.com/jaemuYeo"
-  instagram: "https://www.instagram.com/jjemking/"
-  
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
