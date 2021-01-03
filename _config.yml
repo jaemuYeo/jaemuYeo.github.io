@@ -24,8 +24,8 @@ description              : "ios개발 공부"
 url                      : "https://jaemuyeo.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "/assets/images/swift.jpg"
-logo                     : "/assets/images/swift.jpg"
+teaser                   : "/assets/images/apple.png"
+logo                     : "/assets/images/apple.png"
 masthead_title           : "ios dev story"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -95,7 +95,7 @@ analytics:
 author:
   name             : "JaeMu Yeo"
   avatar           : "/assets/images/1.jpg"
-  bio              : "ios공부와 프로젝트, 회고정리를 위한 블로그입니다 <br> 꾸준히 공부하는 개발자입니다."
+  bio              : "ios공부와 프로젝트, 회고정리를 위한<br> 블로그입니다 <br> 꾸준히 공부하는 개발자입니다."
   location         : "Republic of Korea"
   email            : "jemking94@gmail.com"
   links:
