@@ -24,7 +24,7 @@ description              : "ios개발 공부"
 url                      : "https://jaemuyeo.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "jaemuyeo/jaemuyeo.github.io"
-teaser                   : "/assets/images/apple.png"
+teaser                   : 
 logo                     : "/assets/images/apple.png"
 masthead_title           : "ios dev story"
 # breadcrumbs            : false # true, false (default)
