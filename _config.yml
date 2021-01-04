@@ -102,32 +102,32 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:jemking94@gmail.com
+      url: mailto:jemking94@gmail.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      # url: "http://jaemuyeo.github.io"
+      url: "http://jaemuyeo.github.io"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
     - label: "github"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/jaemuYeo"
+      url: "https://github.com/jaemuYeo"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://www.instagram.com/jjemking/"
+      url: "https://www.instagram.com/jjemking/"
 
 # Site Footer
 footer:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:jemking94@gmail.com
+      url: mailto:jemking94@gmail.com
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/jaemuYeo"
+      url: "https://github.com/jaemuYeo"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
@@ -136,7 +136,7 @@ footer:
       # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://www.instagram.com/jjemking/"
+      url: "https://www.instagram.com/jjemking/"
 
 
 # Reading Files
