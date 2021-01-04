@@ -23,7 +23,7 @@ name                     : "jaemu Yeo"
 description              : "ios개발 공부"
 url                      : "https://jaemuyeo.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : "jaemuyeo/minimal-jaemuyeo"
+repository               : "jaemuyeo/jaemuyeo.github.io"
 teaser                   : "/assets/images/apple.png"
 logo                     : "/assets/images/apple.png"
 masthead_title           : "ios dev story"
@@ -282,7 +282,7 @@ defaults:
       
  # _pages
   - scope:
-      path: ""
+      path: "_pages"
       type: pages
     values:
       layout: single
