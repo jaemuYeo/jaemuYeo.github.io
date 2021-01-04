@@ -3,9 +3,9 @@ main:
 
    - title: "Categories"
      url: /Categories/
-   - title: "About"
-     url: /about/
    - title: "Tags"
      url: /Tags/
+   - title: "About"
+     url: /about/
   # - title: "Sitemap"
   #   url: /sitemap/
