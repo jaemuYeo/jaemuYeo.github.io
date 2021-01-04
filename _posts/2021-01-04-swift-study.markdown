@@ -16,6 +16,7 @@ last_modified_at: "2021-01-04 14:00:00 +08000"
 toc: true
 toc_sticky: true
 toc_label: 목차
+tags: good
 ---
 
 # 간단한테스트 글
