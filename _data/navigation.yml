@@ -4,7 +4,7 @@ main:
    - title: "Categories"
      url: /Categories/
    - title: "About"
-     url: https://jaemuyeo.github.io/minimal-jaemuyeo/about/
+     url: /about/
    - title: "Tags"
      url: /Tags/
   # - title: "Sitemap"
