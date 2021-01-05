@@ -111,6 +111,6 @@ Bars
 
 각각 어떠한 기능을 하는지 알아보기쉬울 것 같다!!
 
-<img width="1007" alt="viewWindow" src="https://user-images.githubusercontent.com/70311145/103648267-ee386600-4f9f-11eb-9cf8-7222d9910fcb.png">
+<img width="1007" alt="viewWindow" src="https://user-images.githubusercontent.com/70311145/103649890-8afc0300-4fa2-11eb-85f8-7d83b11ab5bf.png">
 
 UIView가 제공되어있고 모두 이 클래스를 상속받고 있다. *(KXCoding 강의에서 image를 사용하였습니다. )*
