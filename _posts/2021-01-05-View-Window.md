@@ -111,9 +111,6 @@ Bars
 
 각각 어떠한 기능을 하는지 알아보기쉬울 것 같다!!
 
-<<<<<<< HEAD
-![Uploading 스크린샷 2021-01-05 오후 7.37.49.png…]()
-=======
-![viewWindow](/assets/images/viewWindow.png)
+<img width="1007" alt="viewWindow" src="https://user-images.githubusercontent.com/70311145/103648267-ee386600-4f9f-11eb-9cf8-7222d9910fcb.png">
 
 UIView가 제공되어있고 모두 이 클래스를 상속받고 있다. *(KXCoding 강의에서 image를 사용하였습니다. )*
