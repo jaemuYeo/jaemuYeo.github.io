@@ -46,7 +46,7 @@ sidebar_main: true
 
 
 
-{% assign posts = site.categories.Swift %}
+{% assign posts = site.categories.ios %}
 
 
 
