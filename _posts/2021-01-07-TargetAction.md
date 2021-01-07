@@ -127,9 +127,9 @@ override func viewDidLoa() {
 }
 ```
 
-sel 이란 상수를 선언하고 #selector를 입력후 메서드이름을 입력하면 selector로 변환되는데
+sel 이란 상수를 선언하고 #selector를 입력후 메서드이름을 입력하면
 
-입력하게 되면 컴파일 오류가 발생한다.
+selector로 변환되는데 입력하게 되면 컴파일 오류가 발생한다.
 
 <img width="498" alt="스크린샷 2021-01-07 오후 8 26 00" src="https://user-images.githubusercontent.com/70311145/103887842-16060600-5127-11eb-81ac-a46c48229ca7.png">
 
