@@ -156,3 +156,9 @@ Fix 를 클릭하게되면 selector로 선언했던 두번째 메서드에 @objc
 인자값의 내용과 Event만 조금씩 바뀔뿐 Target-Action을 적용하는 방법은 비슷하다.
 
 다음 시간에는 UIControl내에 포함된 클래스들의 각각의 속성들과 다루는 법을 배워보아야겠다.
+
+
+### 참고 자료
+- [UIControl](https://developer.apple.com/documentation/uikit/uicontrol)
+- [UIControl.state](https://developer.apple.com/documentation/uikit/uicontrol/1618245-state)
+- [Event](https://developer.apple.com/documentation/uikit/uicontrol/event)
