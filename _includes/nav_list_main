@@ -14,8 +14,8 @@
         <span class="nav__sub-title">iOS</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Swift" %}
-                        <li><a href="/categories/swift" class="">swift문법 ({{category[1].size}})</a></li>
+                    {% if category[0] == "swift" %}
+                        <li><a href="/categories/swift" class="">Swift Language ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -29,35 +29,36 @@
 
 
 
-        <span class="nav__sub-title">Project</span>
+        <span class="nav__sub-title">Project & 회고(TIL)</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "IOS 프레임워크" %}
-                        <li><a href="/categories/iOS" class="">iOS ({{category[1].size}})</a></li>
+                    {% if category[0] == "project" %}
+                        <li><a href="/categories/project" class="">Project ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Programmers" %}
-                        <li><a href="/categories/programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
+                    {% if category[0] == "TIL" %}
+                        <li><a href="/categories/TIL" class="">TIL & 회고 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
 
 
-        <span class="nav__sub-title">Algorithms</span>
+
+        <span class="nav__sub-title">Algorithms & CS</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "프로그래머스" %}
-                        <li><a href="/categories/iOS" class="">iOS ({{category[1].size}})</a></li>
+                    {% if category[0] == "programmers" %}
+                        <li><a href="/categories/programmers" class="">프로그래머스 풀이 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Programmers" %}
-                        <li><a href="/categories/programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
+                    {% if category[0] == "cs50" %}
+                        <li><a href="/categories/cs50" class="">CS50 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
