@@ -27,9 +27,21 @@ posts:
 
   - title: iOS
     children:
-      - title: "UIKit"
+      - title: "Frame"
         url: /categories/UIKit
-  - title: Client
+        
+  - title: 알고리즘
     children:
-      - title: "iOS"
-        url: /categories/iOS
+      - title: "프로그래머스"
+        url: /categories/프로그래머스
+      - title: "백준"
+        url: /categories/백준
+      - title: "Note"
+        url: /categories/Note
+        
+  - title: 회고
+    children:
+      - title: "Project"
+        url: /categories/Project
+      - title: "Today I Learned"
+        url: /categories/TIL
