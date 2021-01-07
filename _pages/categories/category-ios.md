@@ -1,16 +1,32 @@
----
+\---
 
-title: "Swift 문법 공부"
+
+
+title: "ios 프레임워크 공부"
+
+
 
 layout: archive
 
-permalink: categories/swift
+
+
+permalink: categories/ios
+
+
 
 author_profile: true
 
+
+
 sidebar_main: true
 
----
+
+
+\---
+
+
+
+
 
 
 
@@ -18,10 +34,20 @@ sidebar_main: true
 
 
 
+
+
+
+
 ***
 
 
 
+
+
+
+
 {% assign posts = site.categories.Swift %}
+
+
 
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
