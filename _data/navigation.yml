@@ -14,43 +14,22 @@ main:
 
 
 posts:
-  - title: Back-End
+  - title: Language
     children:
-      - title: "Spring"
-        url: /categories/#spring
-      - title: "Play Framework"
-        url: /categories/#playframework
-      - title: "Linux"
-        url: /categories/#linux
-      - title: "DB"
-        url: /categories/#db
-  - title: Front-End
+      - title: "Swift"
+        url: /categories/Swift
+      - title: "RXSwift"
+        url: /categories/RXSwift
+      - title: "SwiftUI"
+        url: /categories/SwiftUI
+      - title: "Objective-C"
+        url: /categories/Obj
+
+  - title: iOS
     children:
-      - title: "Web"
-        url: /categories/#web
+      - title: "UIKit"
+        url: /categories/UIKit
   - title: Client
     children:
       - title: "iOS"
-        url: /categories/#ios
-  - title: Programming
-    children:
-      - title: "Java"
-        url: /categories/#java
-      - title: "Scala"
-        url: /categories/#scala
-      - title: "Docker"
-        url: /categories/#docker
-      - title: "Elasticsearch"
-        url: /categories/#elasticsearch
-      - title: "Nginx"
-        url: /categories/#nginx
-      - title: "Service"
-        url: /categories/#service
-      - title: "Blog Dev"
-        url: /categories/#blog
-      - title: "IDE"
-        url: /categories/#ide
-      - title: "Git"
-        url: /categories/#git
-      - title: "Etc"
-        url: /categories/#programming
+        url: /categories/iOS
