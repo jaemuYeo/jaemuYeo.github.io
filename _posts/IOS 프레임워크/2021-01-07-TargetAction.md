@@ -106,7 +106,7 @@ Event는 [공식문서](https://developer.apple.com/documentation/uikit/uicontro
 
 <img width="516" alt="스크린샷 2021-01-07 오후 8 18 21" src="https://user-images.githubusercontent.com/70311145/103886894-8875e680-5125-11eb-9d4e-1215a5d472fe.png">
 
-이번에는 Button을 @IBOutlet으로 선언하고 메서드에는 @IBAction을 제외한 코드로 작성을 한다.
+Button을 @IBOutlet으로 선언하고 메서드에는 @IBAction을 제외한 코드로 작성을 한다.
 
 그다음은 viewDidLoad에 버튼과 액션을 연결하면 된다.
 
@@ -133,7 +133,7 @@ selector로 변환되는데 입력하게 되면 컴파일 오류가 발생한다
 
 <img width="498" alt="스크린샷 2021-01-07 오후 8 26 00" src="https://user-images.githubusercontent.com/70311145/103887842-16060600-5127-11eb-81ac-a46c48229ca7.png">
 
-selector로 전달한 메서드가 Objective-C에 공개되지 않았다고 나와있고 @objc특성을 추가하라고 나와있다. 
+selector로 전달한 메서드가 Objective-C에 공개되지 않아서 @objc특성을 추가하라고 나와있다. 
 
 Fix 를 클릭하게되면 selector로 선언했던 두번째 메서드에 @objc가 추가된것을 확인할 수 있다.
 
