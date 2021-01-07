@@ -11,21 +11,45 @@
             👨‍💻 전체 글 수 <u>{{sum}}</u> 개
       </li>
       <li>
-        <span class="nav__sub-title">Swift</span>
+        <span class="nav__sub-title">iOS</span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Swift" %}
-                        <li><a href="/categories/swift" class="">Swift ({{category[1].size}})</a></li>
+                        <li><a href="/categories/swift" class="">swift문법 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "ios" %}
+                        <li><a href="/categories/ios" class="">iOS Framework ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
 
 
 
-        <span class="nav__sub-title">iOS</span>
+        <span class="nav__sub-title">Project</span>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "IOS 프레임워크" %}
+                        <li><a href="/categories/iOS" class="">iOS ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Programmers" %}
+                        <li><a href="/categories/programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+
+        <span class="nav__sub-title">Algorithms</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "프로그래머스" %}
                         <li><a href="/categories/iOS" class="">iOS ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
