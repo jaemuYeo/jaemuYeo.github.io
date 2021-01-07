@@ -1,14 +1,14 @@
-\---
+---
 
 title: "UIControl & Target-Action 1" 
 
 categories:
 
- \- iOS
+ - iOS
 
 tags:
 
- \- [UIKit,framework]
+ - [UIKit,framework]
 
 
 
@@ -18,11 +18,11 @@ toc_sticky: true
 
 
 
-**date: 2021-01-07**
+date: 2021-01-07
 
-**last_modified_at: 2021-01-07**
+last_modified_at: 2021-01-07
 
-**---**
+---
 
 # UIControl & Target-Action ?
 
