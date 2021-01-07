@@ -12,36 +12,3 @@ main:
   # - title: "Sitemap"
   #   url: /sitemap/
 
-
-posts:
-  - title: Language
-    children:
-      - title: "Swift"
-        url: /categories/Swift
-      - title: "RXSwift"
-        url: /categories/RXSwift
-      - title: "SwiftUI"
-        url: /categories/SwiftUI
-      - title: "Objective-C"
-        url: /categories/Obj
-
-  - title: iOS
-    children:
-      - title: "Frame"
-        url: /categories/UIKit
-        
-  - title: 알고리즘
-    children:
-      - title: "프로그래머스"
-        url: /categories/프로그래머스
-      - title: "백준"
-        url: /categories/백준
-      - title: "Note"
-        url: /categories/Note
-        
-  - title: 회고
-    children:
-      - title: "Project"
-        url: /categories/Project
-      - title: "Today I Learned"
-        url: /categories/TIL
