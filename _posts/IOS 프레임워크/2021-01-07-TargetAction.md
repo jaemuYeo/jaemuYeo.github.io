@@ -1,6 +1,6 @@
 ---
 
-title: "UIControl & Target-Action 1" 
+title: "UIControl & Target-Action" 
 
 categories:
 
