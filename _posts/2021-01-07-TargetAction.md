@@ -4,7 +4,7 @@ title: "UIControl & Target-Action 1"
 
 categories:
 
- - iOS
+ - ios
 
 tags:
 
