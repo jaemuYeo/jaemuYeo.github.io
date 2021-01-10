@@ -4,7 +4,9 @@ permalink: /about/
 layout: single
 ---
 
-</center> # Jamking Blog <center>
+# Jamking Blog
+
+---
 
 반갑습니다. ios 개발공부중인 잼킹입니다🙃
 
