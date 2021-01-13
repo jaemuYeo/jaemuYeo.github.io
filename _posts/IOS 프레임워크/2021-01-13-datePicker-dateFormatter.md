@@ -1,3 +1,21 @@
+---
+title: "UIKit) Date Picker & Date Formatter"
+
+categories:
+  - ios
+
+tags:
+  - [UIKit, framework]
+
+toc: true
+
+toc_sticky: true
+
+date: 2021-01-14
+
+last_modified_at: 2021-01-14
+---
+
 # UIKit) Date Picker & Date Formatter
 
 ## DatePicker
@@ -68,7 +86,7 @@ preferred Style - DatePicker의 스타일을 지정.
 let formatter = DateFormatter()
 ```
 
-그런 다음 String 또는 localized String으로 시작하는 메서드로 날짜를 전달한다.
+그런 다음 String 또는 localizedString으로 시작하는 메서드로 날짜를 전달한다.
 
 형식을 지정할 때에는 미리 지정된 형식을 사용하거나 직접 포맷 문자열을 설정할 수 있다.
 
@@ -119,3 +137,148 @@ formatter.timeStyle = .medium
 | full   | full   | Wednesday, January 13, 2021 at 7:42:24 PM Korean Standard Time |
 
 위의 표는 string(from:)메서드를 통해 출력한 값을 나타낸 것이다.
+
+```swift
+let now = Date() // 현재시간을 나타냄
+
+let formatter = DateFormatter()
+
+formatter.dateStyle = .full // dateStyle 을 full로 지정
+formatter.timeStyle = .medium // timeStyle 을 medium으로 지정
+
+var result = formatter.string(frome: now)
+print(result) // Wednesday, January 13, 2021 at 7:42:24 PM
+
+formatter.string(for: now)
+```
+
+위 코드는 현재의 시간을 문자열로 나타낸 코드이다.
+
+파라미터로 전달하는 문자가 옵셔널이라면 string(for:) 메서드를 사용할 수 있다.
+
+한국어로 출력을 하고싶으면 locale을 사용하면 된다.
+
+```swift
+formatter.locale = Locale(identifier: "ko_KR")
+// 2021년 1월 13일 수요일 오후 7시 42분 24초 대한민국 표준시
+```
+
+Formatter를 반복적으로 사용하지 않는다면 위에 코드처럼 인스턴스를 생성하지 않고
+
+클래스함수를 사용할 수 있다.
+
+```swift
+DateFormatter.localizedString(from: now, dateStyle: .long, timeStyle: .short)
+```
+
+formatter 문자열을 통해 지역화된 문자열을 얻을 때에는
+
+setLocalizedDateFormatFromTemplate(dateFormatTemlpate:String) 메서드를 사용한다.
+
+Date를 String로 표현하기 위해서는 YYYYMMDD 같은 locale identifier을 알고있어야한다.
+
+**[한국과 미국을 표준으로 한 표를 참고하였다](https://popopo.tistory.com/156)**
+
+```swift
+let now = Date()
+let formatter = DateFormatter()
+// 년, 월, 일, 요일이 포함된 포멧문자열 생성
+formatter.setLocalizedDateFormatFromTemplate("yyyyMMMMdE")
+
+// 영어 locale 설정
+formatter.locale = Locale(identifier: "en_US")
+var result = formatter.string(from: now)
+print(result) // Wed, January 13, 2021
+
+// 한국 locale 설정
+formatter.locale = Locale(identifier: "ko_KR")
+result = formatter.string(from: now)
+print(result) //수, 1월 13, 2021
+```
+
+위 코드를 보면 한국 locale 부분에서 이상함이 느껴진다.
+
+한글로 출력은 되지만 미국형식과 동일하다. 그 이유는 dateFormat이 locale에 맞게
+
+업데이트 되지 않아서 그렇다. locale을 바꾼다 해서 Fromat문자열이 자동으로
+
+업데이트 되지는 않는다. 그래서 locale을 바꾸고 나서 메서드를 다시 호출해야한다.
+
+```swift
+let now = Date()
+let formatter = DateFormatter()
+
+formatter.locale = Locale(identifier: "en_US")
+formatter.setLocalizedDateFormatFromTemplate("yyyyMMMMdE")
+var result = formatter.string(from: now)
+print(result) // Wed, January 13, 2021
+
+formatter.locale = Locale(identifier: "ko_KR")
+formatter.setLocalizedDateFormatFromTemplate("yyyyMMMMdE")
+result = formatter.string(from: now)
+print(result) // 2021년 1월 13일 (수)
+```
+
+이제는 locale에 적합한 문자열이 출력된 것을 볼 수 있다!!
+
+직접 원하는 Format을 설정할 수도 있다.
+
+```swift
+formatter.dateFormat = "yyyyMMMMde"
+result = formatter.string(from: now)
+print(result) //20211월134
+```
+
+이렇게 하면 Format문자로 지정한 Format과 순서가 그대로 반영된 문자열이 출력된다.
+
+이 방식은 locale에 관계없이 고정된 Format이 필요할 때 주로 사용된다.
+
+날짜는 기본적으로 년,월,일로 표시되지만 현재시점을 기준으로 상대적으로 표현도 가능하다.
+
+```swift
+import Foundation
+
+let now = Date()
+let yesterday = now.addingTimeInterval(3600 * -24)
+let tomorrow = now.addingTimeInterval(3600 * 24)
+
+let formatter = DateFormatter()
+formatter.locale = Locale(identifier: "ko_KR")
+formatter.dateStyle = .full
+formatter.timeStyle = .none
+
+formatter.doesRelativeDateFormatting = true
+
+print(formatter.string(from: now)) // 어제
+print(formatter.string(from: yesterday)) // 오늘
+print(formatter.string(from: tomorrow)) // 내일
+
+```
+
+doesRelativeDateFormatting 속성을 사용하면 48시간 이내의 날짜를
+
+그저께, 어제, 오늘, 내일, 모레와같은 상대적인 문자열로 바꿀 수 있다.
+
+Symbol을 통해 이모티콘을 요일과 오전,오후로 표현도 가능하다.
+
+```swift
+let now = Date()
+let weekdaySymbols = ["❤️", "🧡", "💛", "💚", "💙", "💜", "🤍"]
+let am = "🌞"
+let pm = "🌙"
+
+let formatter = DateFormatter()
+formatter.dateStyle = .full
+formatter.timeStyle = .full
+
+print(formatter.string(from: now))
+// Thursday, January 14, 2021 at 12:44:49 AM Korean Standard Time
+
+formatter.amSymbol = am
+formatter.pmSymbol = pm
+
+formatter.weekdaySymbols = weekdaySymbols
+
+print(formatter.string(from: now))
+// 💙, January 14, 2021 at 12:44:49 🌞 Korean Standard Time
+```
