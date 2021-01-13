@@ -16,7 +16,7 @@ date: 2021-01-14
 last_modified_at: 2021-01-14
 ---
 
-# UIKit) Date Picker & Date Formatter
+# Date Picker와 Date Formatter 알아보기.
 
 ## DatePicker
 
