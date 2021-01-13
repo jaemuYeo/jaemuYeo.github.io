@@ -337,3 +337,57 @@ T와 Z 같은 구분문자를 '' 로 감싸줘야한다.
 이와 같은 방식을 사용할 때는 dateFormat속성을 정확히 지정해야 한다.
 
 조금이라도 오타가 생기면 파싱에 실패하게 되므로 주의해야한다.
+
+---
+
+## Count Down Timer
+
+위에서 보았던 datePicker의 모드 중 Count Down Timer를 구현해보자.
+
+<img width="322" alt="스크린샷 2021-01-14 오전 2 02 51" src="https://user-images.githubusercontent.com/70311145/104484421-a1dacf00-560c-11eb-934a-9c34c536e41d.png">
+
+datePicker에서 시간과 분을 설정한뒤 버튼을 누르면 카운트다운을
+
+실행하는 간단한 앱을 구현할 것이다.
+
+<img width="510" alt="스크린샷 2021-01-14 오전 2 04 10" src="https://user-images.githubusercontent.com/70311145/104484606-cfc01380-560c-11eb-99c8-067b95973748.png">
+
+Label과 datePicker를 아웃렛에 연결하고 Button을 액션으로 연결하였다.
+
+Count Down Timer에서 선택할 수 있는 가장 작은 설정값은 1분이다.
+
+그리고 선택할 수 있는 가장 큰 값은 23시간 59분이다.
+
+<img width="341" alt="스크린샷 2021-01-14 오전 2 32 33" src="https://user-images.githubusercontent.com/70311145/104487769-dc466b00-5610-11eb-8f85-0b6a695c5c3e.png">
+
+Count Down Timer는 이름과 달리 카운트 다운을 직접 처리하지 못한다.
+
+이 부분은 타이머를 활용해서 직접 구현해야 한다.
+
+<img width="420" alt="스크린샷 2021-01-14 오전 2 33 51" src="https://user-images.githubusercontent.com/70311145/104487850-f41def00-5610-11eb-8496-771e34ddfe5a.png">
+
+남은 시간을 저장할 속성을 선언하고 0으로 초기화 한다.
+
+<img width="629" alt="스크린샷 2021-01-14 오전 2 34 47" src="https://user-images.githubusercontent.com/70311145/104487979-1b74bc00-5611-11eb-94ed-fa5ebe936ea4.png">
+
+Timer가 제공하는 메서드를 통해 반복할 코드를 구현한다.
+
+첫번째 파라미터는 반복주기를 전달하고
+
+두번째 파라미터에 false가 적용되면 한번만 실행되고 타이머가 종료된다.
+
+세번째 파라미터에는 실행할 코드를 전달한다.
+
+남은 시간을 1초씩 줄이고 Label을 업데이트한다.
+
+<img width="326" alt="스크린샷 2021-01-14 오전 2 37 03" src="https://user-images.githubusercontent.com/70311145/104488221-67bffc00-5611-11eb-8ffe-1b8cecc29368.png">
+
+마지막으로 남은 시간이 0이면 타이머가 종료하고 기본효과음을 재생한다.
+
+**전체코드**
+
+<img width="707" alt="스크린샷 2021-01-14 오전 2 37 53" src="https://user-images.githubusercontent.com/70311145/104488310-845c3400-5611-11eb-8a28-fd859066702d.png">
+
+**앱 실행**
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/70311145/104488568-e3ba4400-5611-11eb-8ac9-0049e2680fb3.gif)
