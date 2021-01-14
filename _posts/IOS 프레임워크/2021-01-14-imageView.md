@@ -326,3 +326,63 @@ Tint Color의 속성은 모든 subView에 상속된다.
 이 특징을 잘 활용해 Tint Color와 Template Image를 조합해 컬러테마를 쉽게 구현할 수 있다.
 
 <img width="751" alt="스크린샷 2021-01-14 오후 7 36 14" src="https://user-images.githubusercontent.com/70311145/104579801-cc299c80-569f-11eb-9a08-92885971b7a8.png">
+
+---
+
+## Image Resizing
+
+<img width="310" alt="스크린샷 2021-01-14 오후 8 19 13" src="https://user-images.githubusercontent.com/70311145/104584345-cdf65e80-56a5-11eb-94cb-10fa6b2cfd11.png">
+
+위 사진에서 imageView의 프레임은 RootView의 프레임과 같다.
+
+대용량 픽셀의 사진을 사용하였고 Content Mode가 center로 지정되어있어
+
+사진의 중앙을 중심으로 이미지를 보여주고 있다.
+
+Resizing을 이용하여 전체이미지가 imageView프레임안에 모두 들어오도록 구현할 수 있다.
+
+<img width="981" alt="스크린샷 2021-01-14 오후 8 52 54" src="https://user-images.githubusercontent.com/70311145/104587623-845c4280-56aa-11eb-9291-b09a4e1050c7.png">
+
+extension을 통해 imageContext를 사용한다.
+
+resizingWithImageContext메서드는 리사이징 할 이미지와 리사이징 할 크기를 파라미터로 받은 후
+
+imageContext를 생성하는 메서드를 구현한다.
+
+<img width="593" alt="스크린샷 2021-01-14 오후 8 30 06" src="https://user-images.githubusercontent.com/70311145/104585890-0eef7280-56a8-11eb-8916-7d36facd4d79.png">
+
+위 메서드는 무언가를 그릴 수 있는 그림판을 만드는 역할이다.
+
+첫번 째 파라미터로 크기를 전달한다.
+
+두번 째 파라미터는 사진에 투명한 부분이 있다면 false 없다면 true를 전달한다.
+
+세번 째 파라미터는 이미지의 scale을 전달한다. 0.0은 디바이스의 스케일을 그대로 사용한다.
+
+<img width="461" alt="스크린샷 2021-01-14 오후 8 36 19" src="https://user-images.githubusercontent.com/70311145/104585976-30505e80-56a8-11eb-8325-c13fa11aca48.png">
+
+이렇게 구현하면 그림판이 만들어 졌고 이미지나 텍스트를 자유롭게 구현할 수 있다.
+
+draw(in:)메서드를 사용해 이미지를 프레임 내부에 그려보도록 하자.
+
+<img width="467" alt="스크린샷 2021-01-14 오후 8 39 41" src="https://user-images.githubusercontent.com/70311145/104586303-a5bc2f00-56a8-11eb-9d9d-db0ec7b776c3.png">
+
+이렇게 구현하면 원본이미지가 지정 된 프레임 내에 축소되어서 나타난다.
+
+그 다음에는 context에 그려져 있는 이미지를 실제 이미지로 바꿔줘야 한다.
+
+<img width="503" alt="스크린샷 2021-01-14 오후 8 42 09" src="https://user-images.githubusercontent.com/70311145/104586691-2418d100-56a9-11eb-8949-f6ea99af05a0.png">
+
+현재 사용중인 image context에서 이미지를 가져오는 함수이다.
+
+context에서 작업이 완료되면 반드시 context를 해제해야 한다.
+
+<img width="226" alt="스크린샷 2021-01-14 오후 8 45 16" src="https://user-images.githubusercontent.com/70311145/104586867-6cd08a00-56a9-11eb-93dd-cd40bf12c8cb.png">
+
+이렇게 하면 정상적으로 해지되었고 viewDidLoad에서 축소할 이미지와 축소할 크기를 선언해 줘야한다.
+
+<img width="812" alt="스크린샷 2021-01-14 오후 8 50 53" src="https://user-images.githubusercontent.com/70311145/104587446-465f1e80-56aa-11eb-83c6-93f3754bb683.png">
+
+<img width="1147" alt="스크린샷 2021-01-14 오후 8 49 18" src="https://user-images.githubusercontent.com/70311145/104587434-4101d400-56aa-11eb-93c3-1c50665101cf.png">
+
+코드구현을 마치면 앱 실행시 이미지가 축소되어서 표시된다.
