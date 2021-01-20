@@ -210,4 +210,38 @@ Delegate에게 행이 선택되었음을 알림
 
 ---
 
-##
+## Self Sizing Cell
+
+Self-Sizing Cell이란 Table View의 셀에 표시되는 내용이 보여지도록 자동으로 높이를 설정하는 것이다.
+
+ios11버젼 이 후에는 sizing 속성의 automatic이 체크되어있고 기본 값 되어있으나,
+
+이전 버젼의 SDK로 빌드할 때에나 평소에도 코드를 통해 두 속성의 값을 직접 설정할 수 있다.
+
+지금보는 화면에서는 셀의 높이가 조절이 되지않아 텍스트가 잘려서 보인다.
+
+이 경우에는 automatic의 문제가 아니라 Label의 라인 속성이 1로 되어있어서
+
+0으로 바꿔주면 모든 텍스트가 보여지가 셀이 조절이 된다.
+
+<img width="568" alt="스크린샷 2021-01-20 오후 8 59 33" src="https://user-images.githubusercontent.com/70311145/105172620-3ab89f80-5b63-11eb-9090-f81b22fae2ba.png">
+
+Table View 속성이 기본으로 제공되는 셀의 속성일 때에는 Label의 속성만 고려하면 되지만
+
+Custom Cell을 직접 구현할 때에는 높이의 제약을 지정해주는 것이 매우 중요하다.
+
+Table View에 표시되는 내용의 높이를 예측 할 수 없다면 Self-Sizing Cell을 사용하지만
+
+모든 셀의 높이가 동일하다면 높이를 직접 지정해주는 것이 좋은 선택이다.
+
+<img width="1088" alt="스크린샷 2021-01-21 오전 12 28 07" src="https://user-images.githubusercontent.com/70311145/105197082-998c1200-5b7f-11eb-8f83-22dbfe5334e0.png">
+
+UITableViewDelegate를 통해 개별적으로 셀에 접근해 높이를 지정가능하다.
+
+위 코드는 0번째 인덱스에 접근해 높이를 100으로 제한하고 나머지는 자동으로 계산되게 하였다.
+
+<img width="568" alt="스크린샷 2021-01-21 오전 12 28 16" src="https://user-images.githubusercontent.com/70311145/105197100-9d1f9900-5b7f-11eb-8edc-da7d1646cf0d.png">
+
+코드 결과를 보면 첫번째 셀은 100으로 지정된 높이로 표시되고
+
+그 밑에 셀은 자동으로 조절이 된 것을 확인할 수 있다.
