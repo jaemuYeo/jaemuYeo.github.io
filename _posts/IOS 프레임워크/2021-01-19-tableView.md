@@ -1,3 +1,21 @@
+---
+title: "UIKit) TableView 알아보기 1"
+
+categories:
+  - ios
+
+tags:
+  - [UIKit, framework]
+
+toc: true
+
+toc_sticky: true
+
+date: 2021-01-19
+
+last_modified_at: 2021-01-19
+---
+
 # [Table View](https://developer.apple.com/documentation/uikit/uitableview)
 
 Table View는 세로방향으로 스크롤되는 목록을 구현할 때 사용한다.
@@ -67,7 +85,7 @@ indexPath를 통해 셀에 접근 할 수 있다. 셀에는 Label, Image 등이 
 
 ---
 
-## custom Accessory 구현방법
+## custom Accessory 스위치 구현
 
 스토리보드에서 custom Accessory 설정이 불가능하기에 코드로 구현해야한다.
 
@@ -99,6 +117,42 @@ Target - Action을 통한 액션구현도 가능하다.
 
 ---
 
+## Custom Accessory View 구현해보기.
+
+- Disclosure indicator - cell을 선택했을 때 push로 화면 전환될 때 사용.
+- Detail Button - 상세정보를 모달 형태로 전달할 때 사용. (delegate를 통해 구현)
+- Detail Disclosure - 위의 두 스타일을 모두 사용하는 것.
+- Checkmark - 선택상태를 표시할 떄 사용.
+- None - 기본 스타일
+
+Custom Accessory View를 통해 이미지를 추가할 수 있다.
+
+cellForRow(at:)메서드에서 구현하게 되면 오버헤드가 발생하므로
+
+새로운 커스텀셀 클래스를 만들고 초기화 시점에 코드가 실행되도록 구현해야한다.
+
+스토리보드에서 Table View와 Cell을 배치하고 각 cell의 identifier를
+
+'cell' , 'cell2'로 지정한 후 새로운 viewController에 푸시와 모달 연결.
+
+<img width="662" alt="스크린샷 2021-01-20 오후 8 16 49" src="https://user-images.githubusercontent.com/70311145/105167883-a51a1180-5b5c-11eb-8f02-00205d56f85f.png">
+
+switch로 메서드의 indexPath.row에 접근하여
+
+case 별로 텍스트와 악세사리 타입을 지정.
+
+<img width="837" alt="스크린샷 2021-01-20 오후 8 17 14" src="https://user-images.githubusercontent.com/70311145/105167889-a6e3d500-5b5c-11eb-9f98-7a3b0a5d0d05.png">
+
+UITableViewDelegate 프로토콜을 선언하고 Push와 Modal 실행 구현
+
+<img width="815" alt="스크린샷 2021-01-20 오후 8 17 21" src="https://user-images.githubusercontent.com/70311145/105167894-a9462f00-5b5c-11eb-83a4-a6fd31e0f0c2.png">
+
+Custom Accessory Image 구현 코드
+
+<img width="620" alt="스크린샷 2021-01-20 오후 8 17 26" src="https://user-images.githubusercontent.com/70311145/105167897-a9dec580-5b5c-11eb-8711-8b958152d686.png">
+
+## ![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/70311145/105167983-ce3aa200-5b5c-11eb-9cda-335407ee0a70.gif)
+
 ## Separator Inset. 개별 Cell 적용하기
 
 <img width="844" alt="스크린샷 2021-01-20 오전 2 25 59" src="https://user-images.githubusercontent.com/70311145/105070641-f081e080-5ac6-11eb-9046-b47fd04b3984.png">
@@ -125,6 +179,9 @@ tableView와 tableViewCell의 속성에서는 separator만 설정이 가능하�
 <img width="793" alt="스크린샷 2021-01-20 오전 3 02 30" src="https://user-images.githubusercontent.com/70311145/105074666-047c1100-5acc-11eb-9272-85f2c448d28d.png">
 
 <img width="616" alt="스크린샷 2021-01-20 오후 4 44 14" src="https://user-images.githubusercontent.com/70311145/105143172-d257c700-5b3e-11eb-9801-77b7967189b3.png">
+
+.
+
 <img width="428" alt="스크린샷 2021-01-20 오후 4 44 26" src="https://user-images.githubusercontent.com/70311145/105143175-d2f05d80-5b3e-11eb-9c0d-12d5886a3b35.png">
 
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/70311145/105075196-c8957b80-5acc-11eb-8170-e71c61bc50d6.gif)
