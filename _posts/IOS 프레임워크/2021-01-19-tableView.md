@@ -1,0 +1,156 @@
+# [Table View](https://developer.apple.com/documentation/uikit/uitableview)
+
+Table View는 세로방향으로 스크롤되는 목록을 구현할 때 사용한다.
+
+Table View의 가장 기초가 되는 구현 순서.
+
+1. Table View를 View에 배치 후 오토레이아웃 지정 (크기 설정)
+
+2. 새로운 프로토타입 Cell을 추가하고 원하는 방식으로 구성
+
+3. 프로토타입 Cell의 Identifier 이름을 지정
+
+4. Table View의 DataSource를 지정 (Delegate)
+
+5. 클래스를 익스텐션하고 UITableVIewDataSoruce 프로토콜을 선언 후 필수 메서드 구현
+
+섹션과 셀로 구성되어있고 셀의 위치를 표현 할 때는 섹션 인덱스와 셀 인덱스를 모두 고려해야한다.
+
+**IndexPath ( cell접근 방법 )**
+
+- cell - Row Index ( indexPath.row )
+- section - Section Index ( indexPath.section )
+
+Table View는 [UITableViewDelegate](https://developer.apple.com/documentation/uikit/uitableviewdelegate) , [UITableViewDataSource](https://developer.apple.com/documentation/uikit/uitableviewdatasource) 를 통해 구현한다.
+
+> 셀을 식별하기위해 문자열을 입력해야 한다. 이 식별자를 'Reuse Identifier'라고 부른다.
+
+프로토콜을 채용하기 위해서는 클래스 밑에 **extension** 을 통해 구현하는 것이 좋다. (가독성)
+
+```swift
+extension tableViewController: UITableViewDataSource {
+
+}
+
+extension tableViewController: UITableViewDelegate {
+
+}
+```
+
+---
+
+## UITableViewDataSource 필수메서드
+
+섹션에 표시할 셀 수를 리턴하는 메서드 (배열 또는 데이터의 인덱스 갯수)
+
+<img width="750" alt="스크린샷 2021-01-19 오후 8 15 12" src="https://user-images.githubusercontent.com/70311145/105027484-2907c700-5a93-11eb-818e-4b0f7edfb1fa.png">
+
+셀을 생성하고 셀에 표시할 데이터를 설정한 후 리턴하는 메서드
+
+<img width="731" alt="스크린샷 2021-01-19 오후 8 18 45" src="https://user-images.githubusercontent.com/70311145/105027816-8f8ce500-5a93-11eb-87a9-fbef9313d049.png">
+
+셀을 생성할 때는 테이블뷰에게 요청해야한다. 테이블뷰의 스크롤 성능을 높이기위해서
+
+**재사용 메커니즘**을 사용한다.
+
+테이블뷰는 재사용 큐를 관리하면서 셀 생성 요청이 있을 떄 마다 큐에 저장된 셀을 리턴한다.
+
+요청 시점에 저장되어 있는 셀이 없으면 프로토타입 셀을 기반으로 새로운 셀을 생성한다.
+
+> Tip. cellForRowAt 메서드는 최대한 가볍게 구현해야한다. (스크롤 성능때문에 비동기로 구현)
+
+이 메서드는 지정된 재사용 식별자에 대해 재사용 가능한 테이블 뷰 셀 객체를 반환하고 테이블에 추가한다.
+
+<img width="660" alt="스크린샷 2021-01-19 오후 8 23 06" src="https://user-images.githubusercontent.com/70311145/105028324-3bcecb80-5a94-11eb-8c0c-275874844f49.png">
+
+indexPath를 통해 셀에 접근 할 수 있다. 셀에는 Label, Image 등이 있다.
+
+---
+
+## custom Accessory 구현방법
+
+스토리보드에서 custom Accessory 설정이 불가능하기에 코드로 구현해야한다.
+
+UITableViewCell을 상속하는 클래스를 만든 후 초기화 코드를 구현하는 방법을 사용해아한다.
+
+테이블뷰와 셀을 루트뷰에 지정한 후에 UITableViewCell을 상속받는 클래스를 만들어준다.
+
+<img width="717" alt="스크린샷 2021-01-20 오전 1 25 12" src="https://user-images.githubusercontent.com/70311145/105063422-10150b00-5abf-11eb-8391-743fd6945c1f.png">
+
+awakeFromNib 메서드에 초기화 시키는 코드를 작성한다.
+
+<img width="638" alt="스크린샷 2021-01-20 오전 1 24 51" src="https://user-images.githubusercontent.com/70311145/105063409-0db2b100-5abf-11eb-803d-377624b58bd6.png">
+
+다시 돌아가 커스텀 할 셀 속성에서 Custom Class에 방금 초기화한 클래서를 지정해준다.
+
+<img width="260" alt="스크린샷 2021-01-20 오전 1 25 32" src="https://user-images.githubusercontent.com/70311145/105063424-10ada180-5abf-11eb-8ba1-5c5c5f19905f.png">
+
+셀의 Identifier를 지정해준 후 클래스에 UITableViewDataSource 프로토콜을 선언한다.
+
+<img width="256" alt="스크린샷 2021-01-20 오전 1 28 37" src="https://user-images.githubusercontent.com/70311145/105063425-11463800-5abf-11eb-997c-6e25cabde0f8.png">
+
+필수 매서드 구현 후 앱을 실행해주면 스위치 악세사리가 적용된것을 볼 수 있다.
+
+Target - Action을 통한 액션구현도 가능하다.
+
+<img width="849" alt="스크린샷 2021-01-20 오전 1 53 35" src="https://user-images.githubusercontent.com/70311145/105066676-60da3300-5ac2-11eb-8492-5505f8355b10.png">
+
+<img width="568" alt="스크린샷 2021-01-20 오전 1 53 42" src="https://user-images.githubusercontent.com/70311145/105066687-63d52380-5ac2-11eb-9969-2cd8182c80c1.png">
+
+---
+
+## Separator Inset. 개별 Cell 적용하기
+
+<img width="844" alt="스크린샷 2021-01-20 오전 2 25 59" src="https://user-images.githubusercontent.com/70311145/105070641-f081e080-5ac6-11eb-9046-b47fd04b3984.png">
+
+<img width="568" alt="스크린샷 2021-01-20 오전 2 26 04" src="https://user-images.githubusercontent.com/70311145/105070654-f4adfe00-5ac6-11eb-8cc4-73f43b3bfe0b.png">
+
+재사용 메커니즘으로 인한 Inset이 다시 사용되는 것을 막기위해 초기화를 꼭 해줘야 한다.
+
+tableView와 tableViewCell의 속성에서는 separator만 설정이 가능하다.
+
+이미지나 높이를 직접 지정하고 싶다면 separator를 none으로 설정 후 커스텀 separator를 구현해야한다.
+
+---
+
+## Table View Cell
+
+기능구현
+
+1. 셀에 이미지 넣기
+2. 셀을 클릭하면 푸시화면에 해당 셀 텍스트 넣기
+3. 짝수 인덱스 셀에 Background Color 설정하기.
+4. 델리게이트 구현하기.
+
+<img width="793" alt="스크린샷 2021-01-20 오전 3 02 30" src="https://user-images.githubusercontent.com/70311145/105074666-047c1100-5acc-11eb-9272-85f2c448d28d.png">
+
+<img width="616" alt="스크린샷 2021-01-20 오후 4 44 14" src="https://user-images.githubusercontent.com/70311145/105143172-d257c700-5b3e-11eb-9801-77b7967189b3.png">
+<img width="428" alt="스크린샷 2021-01-20 오후 4 44 26" src="https://user-images.githubusercontent.com/70311145/105143175-d2f05d80-5b3e-11eb-9c0d-12d5886a3b35.png">
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/70311145/105075196-c8957b80-5acc-11eb-8170-e71c61bc50d6.gif)
+
+### 사용한 메서드
+
+지정된 셀의 인덱스 경로를 가져온다.
+
+<img width="676" alt="스크린샷 2021-01-20 오후 4 32 57" src="https://user-images.githubusercontent.com/70311145/105143157-d1269a00-5b3e-11eb-82db-46a029e20fc6.png">
+
+지정된 인덱스 경로에있는 테이블 셀을 반환
+
+<img width="746" alt="스크린샷 2021-01-20 오후 4 24 40" src="https://user-images.githubusercontent.com/70311145/105143178-d388f400-5b3e-11eb-8043-c62cbafcc967.png">
+
+tableView가 특정 행에 대한 셀을 그리려고한다는 것을 Delegate에게 알림
+
+<img width="743" alt="스크린샷 2021-01-20 오후 4 38 41" src="https://user-images.githubusercontent.com/70311145/105143167-d257c700-5b3e-11eb-9329-8955132cd264.png">
+
+Delegate에게 행이 선택되었음을 알림
+
+<img width="625" alt="스크린샷 2021-01-20 오후 4 26 06" src="https://user-images.githubusercontent.com/70311145/105143180-d4218a80-5b3e-11eb-970c-e00bb2335b33.png">
+
+셀을 선택한 상태에서 새로운화면으로 전환되기 직전에 호출
+
+<img width="608" alt="스크린샷 2021-01-20 오후 4 30 01" src="https://user-images.githubusercontent.com/70311145/105143182-d4218a80-5b3e-11eb-892a-de3d3ad07fde.png">
+
+---
+
+##
