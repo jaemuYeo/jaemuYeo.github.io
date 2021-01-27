@@ -1,11 +1,8 @@
 ---
-title:
+title: "Jamking Blog"
 permalink: /about/
 layout: single
 ---
-
-# Jamking Blog
-
 반갑습니다. ios 개발공부중인 잼킹입니다🙃
 
 개발자의 역량을 키우기 위해 항상 노력하고 공부 중입니다.
