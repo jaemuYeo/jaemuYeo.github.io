@@ -99,3 +99,28 @@ viewDidAppear - 루트뷰가 뷰 계층에 추가되었을 때 호출 (뷰가 �
 viewWillDisappear - 루트뷰가 뷰 계층에서 제거되기 진전에 호출 (뷰가 사라질 것이다 )
 
 viewDidDisappear - 루트뷰가 뷰 계층에서 제거되었을 때 호출 (뷰가 사라졌다 )
+
+---
+
+## 뷰 계층 구조
+
+view의 계층 구조는 superView, subView, siblingView로 특정되며 이는 drawing 순서를 결정 짓는다.
+
+superView와 subView의 관계에서는 superView가 우선해서 그려진다.
+
+동일한 superView 내부에 여러 siblingView가 있다면 먼저 addSubview가 된 순으로
+
+그려진다. 두 sibilingView가 겹쳐 있다면 먼저 drawing된 View가 가려진다.
+
+<img width="696" alt="스크린샷 2021-01-27 오후 6 59 56" src="https://user-images.githubusercontent.com/70311145/105975054-e026c280-60d1-11eb-8af7-a615b9714327.png">
+
+**SuperView와 SubView의 계층구조에 따른 특징**
+
+- superView를 제거하면 subView도 함께 제거된다
+- superView의 투명도는 subView에도 적용된다
+- superView의 size가 변하면 subView의 size도 함께 변한다
+- superView는 subViews를 array로 관리한다
+
+addSubView(\_:)로 subView를 추가하고 removeFromSuperView()를 통해 제거할 수 있다.
+
+이 외에도 subView 표시 순서를 바꾸거나 위치를 교체하는 등 여러 메서드가 구현되어있다.
