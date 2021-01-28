@@ -60,7 +60,7 @@ Child 목록은 배열로 관리하며 스택형식으로 구현되어있다. ( 
 
 네비게이션 컨트롤러를 임베드 하는 방법은 세가지가 있다.
 
-1. XCode 툴바에서 Editor - Embed In - Navigation Controller 선택
+1. Xcode 툴바에서 Editor - Embed In - Navigation Controller 선택
 
 2. cmd + shift + L 을 눌러 Navigation Controller를 인터페이스빌더에 드래그 배치
 
