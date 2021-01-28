@@ -64,35 +64,9 @@ Child 목록은 배열로 관리하며 스택형식으로 구현되어있다. ( 
 
 2. cmd + shift + L 을 눌러 Navigation Controller를 인터페이스빌더에 드래그 배치
 
-<img width="322" alt="스크린샷 2021-01-29 오전 12 58 42" src="https://user-images.githubusercontent.com/70311145/106164345-33317000-61cd-11eb-926c-f34e16ba35c6.png">
-
 3. 임베드 할 VC를 선택 후 하단 우측에서 선택
 
----
-
-## [Navigation Bar](https://developer.apple.com/documentation/uikit/uinavigationbar)
-
-일반적으로 네비게이션 컨트롤러와 함께 화면 상단의 막대에 표시되는 네비게이션 컨트롤이다.
-
-```swift
-class UINavigationBar: UIView
-```
-
-<img width="438" alt="스크린샷 2021-01-28 오후 6 33 48" src="https://user-images.githubusercontent.com/70311145/106118400-6eb14780-6197-11eb-8e05-f475a94e76c4.png">
-
-TopVC와 연관된 버튼과 타이틀을 표시한다.
-
-버튼은 Bar의 왼쪽과 오른쪽에 표시되고, 기본적으로 왼쪽에는 이전화면으로 Pop할 수있는 백 버튼이 있다.
-
-버튼은 항상 UIBarButtonItem 인스턴스로 생성해야 한다.
-
-```swift
-class UIBarButtonItem : UIBarItem
-```
-
-일반적인 다른 뷰를 표현할 때에도 항상 UIBarButtonItem으로 랩핑하여 추가해야한다.
-
-IOS11부터 Large Title 모드가 생겼다. 이 모드를 설정하게되면 바 버튼 밑에 타이틀이 크게 구현된다.
+<img width="322" alt="스크린샷 2021-01-29 오전 12 58 42" src="https://user-images.githubusercontent.com/70311145/106164345-33317000-61cd-11eb-926c-f34e16ba35c6.png">
 
 ---
 
@@ -186,6 +160,32 @@ Unwind Segue를 사용할 때에는 돌아갈 VC 클래스에 Unwind segue와 �
 
 ---
 
+## [Navigation Bar](https://developer.apple.com/documentation/uikit/uinavigationbar)
+
+일반적으로 네비게이션 컨트롤러와 함께 화면 상단의 막대에 표시되는 네비게이션 컨트롤이다.
+
+```swift
+class UINavigationBar: UIView
+```
+
+<img width="438" alt="스크린샷 2021-01-28 오후 6 33 48" src="https://user-images.githubusercontent.com/70311145/106118400-6eb14780-6197-11eb-8e05-f475a94e76c4.png">
+
+TopVC와 연관된 버튼과 타이틀을 표시한다.
+
+버튼은 Bar의 왼쪽과 오른쪽에 표시되고, 기본적으로 왼쪽에는 이전화면으로 Pop할 수있는 백 버튼이 있다.
+
+버튼은 항상 UIBarButtonItem 인스턴스로 생성해야 한다.
+
+```swift
+class UIBarButtonItem : UIBarItem
+```
+
+일반적인 다른 뷰를 표현할 때에도 항상 UIBarButtonItem으로 랩핑하여 추가해야한다.
+
+IOS11부터 Large Title 모드가 생겼다. 이 모드를 설정하게되면 바 버튼 밑에 타이틀이 크게 구현된다.
+
+---
+
 ### Navigation Item & NavigationBar
 
 네비게이션바는 네비게이션 스택이 업데이트 될 때 마다 함께 업데이트 된다.
@@ -193,3 +193,61 @@ Unwind Segue를 사용할 때에는 돌아갈 VC 클래스에 Unwind segue와 �
 표시할 버튼과 타이틀은 Child VC에서 개별적으로 저장한다.
 
 네비게이션 아이템에 원하는 항목을 저장해두면 Top VC로 지정되었을 때 네비게이션바에 표시된다.
+
+<img width="262" alt="스크린샷 2021-01-29 오전 3 44 45" src="https://user-images.githubusercontent.com/70311145/106184026-5ae00280-61e4-11eb-92ab-65c7de1aa892.png">
+
+네비게이션컨트롤러에서 네비게이션바를 선택 후 속성을 보면 위 사진처럼 구성되어있다.
+
+스타일을 정할 수 있고 배경을 투명하게 하거나 타이틀을 라지사이즈로 바꿀 수 있다.
+
+Back버튼의 이미지를 지정할 수 있고 타이틀의 두 스타일에 따라 폰트와 사이즈, 컬러 등을 지정할 수 있다.
+
+### Title 설정
+
+인터페이스 빌더
+
+<img width="694" alt="스크린샷 2021-01-29 오전 3 35 54" src="https://user-images.githubusercontent.com/70311145/106183501-9e863c80-61e3-11eb-8871-1d87484c36d9.png">
+
+코드
+
+<img width="412" alt="스크린샷 2021-01-29 오전 3 39 05" src="https://user-images.githubusercontent.com/70311145/106183513-a1812d00-61e3-11eb-966a-347340b09db9.png">
+
+### Bar Button Item
+
+<img width="642" alt="스크린샷 2021-01-29 오전 3 50 05" src="https://user-images.githubusercontent.com/70311145/106184582-16089b80-61e5-11eb-8cc9-217df50c38c1.png">
+
+System Item이 Custom으로 되어있으면 버튼의 타이틀이나 이미지 등을 직접 설정한다.
+
+System Item에는 직관적인 고유의 이미지들이 여러개 있다.
+
+코드를 통해 bar button item에 접근하려면 Target-Action 메커니즘을 사용한다.
+
+네비게이션바에 추가되는 뷰는 항상 bar button item에 임베드되어서 추가된다.
+
+<img width="253" alt="스크린샷 2021-01-29 오전 4 00 28" src="https://user-images.githubusercontent.com/70311145/106185729-8a900a00-61e6-11eb-93f6-36b8ba0e687c.png">
+
+스토리보드를 통해 추가하면 자동으로 추가되지만 코드를 통해 추가하면 직접 임베드 해야한다.
+
+<img width="983" alt="스크린샷 2021-01-29 오전 4 10 47" src="https://user-images.githubusercontent.com/70311145/106186891-3ede6000-61e8-11eb-99ba-1b16af2d7dcf.png">
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/70311145/106186869-384fe880-61e8-11eb-9382-29cfba80ac22.gif)
+
+## Back Button
+
+네비게이션에 연결된 뷰 중에 루트뷰가 아니라면 이전화면으로 돌아가는
+
+Back Button이 자동으로 생성된다.
+
+Back Button의 타이틀은 기본적으로 이전화면의 타이틀로 설정된다.
+
+하지만 타이틀을 넣을 공간이 부족하다면 Back 문자로 전환된다.
+
+Back Button을 직접 추가한 버튼과 함꼐 사용하고 싶다면 navigation item의
+
+속성에서 Left Items Supplement를 체크하거나 코드로 구현해주면 된다.
+
+<img width="638" alt="스크린샷 2021-01-29 오전 4 25 22" src="https://user-images.githubusercontent.com/70311145/106188226-09d30d00-61ea-11eb-9a7b-57b2f35afa08.png">
+
+<img width="475" alt="스크린샷 2021-01-29 오전 4 27 53" src="https://user-images.githubusercontent.com/70311145/106188488-5dddf180-61ea-11eb-92e1-4616cd6d495c.png">
+
+---
