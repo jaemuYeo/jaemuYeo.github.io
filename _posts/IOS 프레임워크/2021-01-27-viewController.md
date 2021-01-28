@@ -16,6 +16,8 @@ date: 2021-01-27
 last_modified_at: 2021-01-27
 ---
 
+이 글의 전반적인 내용은 [KXCoding](https://kxcoding.com/)을 참고하였습니다.
+
 # [View Controller](https://developer.apple.com/documentation/uikit/uiviewcontroller)
 
 뷰 컨트롤러는 UIViewController클래스로 구현되어있다.
@@ -124,3 +126,25 @@ superView와 subView의 관계에서는 superView가 우선해서 그려진다.
 addSubView(\_:)로 subView를 추가하고 removeFromSuperView()를 통해 제거할 수 있다.
 
 이 외에도 subView 표시 순서를 바꾸거나 위치를 교체하는 등 여러 메서드가 구현되어있다.
+
+---
+
+## Container View Controller
+
+위에 있던 글처럼 Content View는 화면에 표시할 UI를 구성하고 관련된 이벤트를 처리한다.
+
+반면 **Container View Controller**는 하나 이상의 Child View Controller를 관리하고
+
+Layout과 Transition을 관리한다. 그리고 UI구성과 이벤트 처리는 Child View Controller가 담당한다.
+
+Container View Controller는 코코아 터치 프레임워크를 통해 기본적으로 제공하고
+
+가장 대표적인 Container View Controller는 **Navigation Controller**가 있다.
+
+Navigation Controller는 Child View Controller를 Push & Pop 방식으로 전환한다.
+
+Custom Container View Controller는 UIViewController가 제공하는 API를 활용해서
+
+자유롭게 구현할 수 있다.
+
+Container View Controller를 통해 표시하면 구현이 단순해지고 유지보수가 쉬워지는 장점이 있다.
