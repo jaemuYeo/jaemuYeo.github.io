@@ -250,9 +250,35 @@ Back Button을 직접 추가한 버튼과 함꼐 사용하고 싶다면 navigati
 
 <img width="475" alt="스크린샷 2021-01-29 오전 4 27 53" src="https://user-images.githubusercontent.com/70311145/106188488-5dddf180-61ea-11eb-92e1-4616cd6d495c.png">
 
-### ToolBar
+---
 
+### [ToolBar](https://developer.apple.com/documentation/uikit/uitoolbar)
 
+툴 바는 인터페이스의 하단에 위치해 있고 하나이상의 버튼을 표시하는 컨트롤이다.
+
+네비게이션 컨트롤의 속성에서 Shows Toolbar를 체크해도 되고,
+
+라이브러리 창을 열어 툴 바를 드래그해서 화면에 배치시켜도 된다.
+
+네비게이션과 마찬가지로 트렌지션이 발생할 때 마다 자동으로 업데이트 된다.
+
+<img width="265" alt="스크린샷 2021-01-30 오전 1 00 13" src="https://user-images.githubusercontent.com/70311145/106297928-9b985400-6296-11eb-96fc-397fca47556e.png">
+
+툴 바에서 생성한 BarButtonItem은 왼쪽에서부터 정렬된다.
+
+<img width="269" alt="스크린샷 2021-01-30 오전 1 03 48" src="https://user-images.githubusercontent.com/70311145/106298276-0cd80700-6297-11eb-9763-89d9e4997c4d.png">
+
+Fixed Space는 작은 간격을 정렬할 떄 사용하고
+
+Flexible Space는 비어있는 툴바에 크게 간격을 정렬할 때 사용한다.
+
+<img width="981" alt="스크린샷 2021-01-30 오전 1 16 09" src="https://user-images.githubusercontent.com/70311145/106299640-bf5c9980-6298-11eb-9b71-3fcd6ea6c799.png">
+
+코드로 Toolbar를 구현할 때에는 해당하는 BarButtonItem을 생성 후
+
+setToolbarItems 메서드에서 배열안에다가 넣어주면 된다.
+
+<img width="482" alt="스크린샷 2021-01-30 오전 1 14 44" src="https://user-images.githubusercontent.com/70311145/106299509-950adc00-6298-11eb-8bb5-6f57d5680f77.png">
 
 ---
 
