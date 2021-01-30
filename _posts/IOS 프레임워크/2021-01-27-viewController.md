@@ -147,4 +147,54 @@ Custom Container View Controller는 UIViewController가 제공하는 API를 활�
 
 자유롭게 구현할 수 있다.
 
+```swift
+class CustomContainer: UIViewController {
+
+}
+```
+
 Container View Controller를 통해 표시하면 구현이 단순해지고 유지보수가 쉬워지는 장점이 있다.
+
+---
+
+### Container VC 활용해보기
+
+세 개의 VC가 있고 왼쪽의 VC는 ContainerVC로 사용하고,
+
+오른쪽에 있는 두 VC는 Child VC로 추가하려고 한다.
+
+<img width="514" alt="스크린샷 2021-01-30 오후 10 10 03" src="https://user-images.githubusercontent.com/70311145/106357192-efaf4100-6347-11eb-91d2-3149f2b42cdc.png">
+
+Child를 추가하는 가장 쉬운 방법은 오브젝트 라이브러리에서 컨테이너 뷰를 추가하는 것이다.
+
+<img width="466" alt="스크린샷 2021-01-30 오후 10 16 21" src="https://user-images.githubusercontent.com/70311145/106357320-ccd15c80-6348-11eb-992c-c7d612ebd203.png">
+
+컨테이너 뷰를 추가하게 되면 새로운 Child가 연결된 새로운 VC가 연결되고
+
+컨테이너 뷰의 크기가 업데이트 될때마다 Child VC도 함께 업데이트 된다.
+
+ChildVC에서 UI를 구성하게되면 컨테이너 상단에 표시된다.
+
+새로 생겼던 ChildVC는 지워주고 Top VC를 세그 연결하듯이 드래그해서
+
+Embed를 선택하게되면 viewDidLoad가 호출되는 시점에 child로 추가되고
+
+컨테이너 뷰 프레임에 차일드 뷰가 표시된다.
+
+<img width="176" alt="스크린샷 2021-01-30 오후 10 19 21" src="https://user-images.githubusercontent.com/70311145/106357400-394c5b80-6349-11eb-978f-1bd8496a1108.png">
+
+.
+
+<img width="482" alt="스크린샷 2021-01-30 오후 10 22 46" src="https://user-images.githubusercontent.com/70311145/106357492-b37ce000-6349-11eb-942d-db9cc000c853.png">
+
+코드로 컨테이너뷰 구현하기
+
+스토리보드에 있는 씬으로부터 VC의 인스턴스를 생성한다.
+
+child를 생성할 때에는 addChild메서드를 사용한다.
+
+그 후 직접 표시할 프레임을 추가하고 뷰 계층에 추가한다.
+
+<img width="770" alt="스크린샷 2021-01-30 오후 11 51 18" src="https://user-images.githubusercontent.com/70311145/106359424-14121a00-6356-11eb-81ac-61997392039f.png">
+
+<img width="495" alt="스크린샷 2021-01-30 오후 11 51 36" src="https://user-images.githubusercontent.com/70311145/106359443-2c823480-6356-11eb-9ea1-c2226e79772d.png">
