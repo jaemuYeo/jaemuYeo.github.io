@@ -282,4 +282,66 @@ setToolbarItems 메서드에서 배열안에다가 넣어주면 된다.
 
 ---
 
-## Tab Bar Controller
+## [Tab Bar Controller](https://developer.apple.com/documentation/uikit/uitabbarcontroller)
+
+```swift
+class UITabBarController: UIViewController
+```
+
+childVC를 배열로 관리하는 컨테이너 뷰 컨트롤러이다.
+
+다중 선택 인터페이스를 관리하는 컨테이너 뷰 컨트롤러로, 선택 항목에 따라 표시 할 childVC가 결정된다.
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/70311145/106300716-2b8bcd00-629a-11eb-9dce-89662e50bb58.gif)
+
+탭바컨트롤러의 루트뷰에는 두개가 표시된다.
+
+아랫쪽에는 탭바가 표시되고, Child 수 만큼 탭 바 아이템이 추가된다.
+
+원하는 아이템을 선택하면 나머지 공간에 해당 Child가 표시된다.
+
+탭바 컨트롤러에서 아이템의 갯수가 제한된다.
+
+portrait 모드에서는 다섯개로 제한되고, 최대 갯수가 초과되면 More Item으로 표시된다.
+
+More Item을 선택하게되면 나머지 아이템이 표시되어있는 More Navigation Controller가 표시된다.
+
+<img width="460" alt="스크린샷 2021-01-30 오후 4 46 59" src="https://user-images.githubusercontent.com/70311145/106350834-44889280-631b-11eb-8779-7366d9297eb9.png">
+
+모든 child는 연관된 Tab bar Item을 가지고 있다. 타이틀과 이미지를 저장하면 탭바에 표시된다.
+
+뱃지 문자열을 설정하면 아이탬의 이미지 오른쪽 상단에 표시된다.
+
+Portrait모드에서는 이미지 아랫쪽에 타이틀이 표시된다. 이러한 탭바를 Regular Tab Bar라고한다.
+
+LandScape 모드에서는 이미자와 타이틀이 나란히 표시되고, Compact Tab Bar라고 한다.
+
+---
+
+### Tab Bar Controller 사용해보기
+
+<img width="542" alt="스크린샷 2021-01-30 오후 8 06 37" src="https://user-images.githubusercontent.com/70311145/106354644-adc9cf00-6336-11eb-9910-b8dd6da1b091.png">
+
+네비게이션 컨트롤러와 같은 방식으로 임베드하면 된다.
+
+최초에는 하나의 아이템이 생성되어있다.
+
+<img width="263" alt="스크린샷 2021-01-30 오후 8 07 32" src="https://user-images.githubusercontent.com/70311145/106354662-ce922480-6336-11eb-8a5e-eb3929688c21.png">
+
+아이템의 속성은 기본적으로 System Item이 커스텀으로 되어있고 여러가지 기본 옵션들을
+
+사용할 수 있다. 커스텀이 아닌 다른 속성이 선택되어 있는 상태에서 Bar Item의
+
+타이틀이나 이미지를 변경하게되면 다시 System Item이 커스텀으로 설정된다.
+
+연결을 할 때는 세그를 연결하든 해당 뷰로 컨트롤을 누른상태에서 드래그한 후
+
+view controllers를 통해 연결하면 되고, 지금은 네개이 child를 가지고있고
+
+그러므로 네개의 bar button item이 생성된 것을 볼 수 있다.
+
+<img width="175" alt="스크린샷 2021-01-30 오후 8 10 23" src="https://user-images.githubusercontent.com/70311145/106354715-33e61580-6337-11eb-9d1f-8185c4d75b18.png">
+
+<img width="684" alt="스크린샷 2021-01-30 오후 8 11 22" src="https://user-images.githubusercontent.com/70311145/106354737-55df9800-6337-11eb-9e74-26847133db5a.png">
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/70311145/106354855-f2a23580-6337-11eb-8850-494eefb9e3b4.gif)
