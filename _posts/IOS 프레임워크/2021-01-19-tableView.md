@@ -1,6 +1,8 @@
 ---
 title: "UIKit) TableView 알아보기 1"
 
+excerpt: "tableview controller"
+
 categories:
   - ios
 

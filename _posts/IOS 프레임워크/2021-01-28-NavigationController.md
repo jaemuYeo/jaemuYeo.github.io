@@ -1,6 +1,8 @@
 ---
 title: "UIKit) Navigation Controller"
 
+excerpt: " navigation controller & tab bar controller"
+
 categories:
   - ios
 
