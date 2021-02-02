@@ -16,6 +16,8 @@ date: 2021-01-27
 last_modified_at: 2021-01-27
 ---
 
+View Controller 알아보기
+
 이 글의 전반적인 내용은 [KXCoding](https://kxcoding.com/)을 참고하였습니다.
 
 # [View Controller](https://developer.apple.com/documentation/uikit/uiviewcontroller)
