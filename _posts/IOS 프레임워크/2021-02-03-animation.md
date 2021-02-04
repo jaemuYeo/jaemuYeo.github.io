@@ -1,5 +1,5 @@
 ---
-title: "UIKit) Animation & Transition"
+title: "UIKit) Animation"
 
 categories:
   - ios
@@ -16,7 +16,7 @@ date: 2021-02-03
 last_modified_at: 2021-02-03
 ---
 
-Animation & Transition 배워보기
+Animation 알아보기
 
 이 글의 전반적인 내용은 [KXCoding](https://kxcoding.com/)을 참고하였습니다.
 
@@ -74,6 +74,12 @@ duration은 3초이고 animations에서는 alpha와 backgroundColor이 바뀌는
 스프링처럼 튕기는 애니메이션 구현
 
 <img width="576" alt="스크린샷 2021-02-04 오후 4 35 13" src="https://user-images.githubusercontent.com/70311145/106859859-fb638480-6706-11eb-8d32-4a77305fd632.png">
+
+현재 뷰에 대한 키 프레임 기반 애니메이션을 설정하는 데 사용할 수있는 애니메이션 구현
+
+animate()를 통해 애니메이션 수가 늘어날수록 코드가 중첩이 되어 효율 적이지 않을 때 사용한다.
+
+<img width="647" alt="스크린샷 2021-02-04 오후 5 30 47" src="https://user-images.githubusercontent.com/70311145/106865597-c0fde580-670e-11eb-9935-55abe4f13661.png">
 
 [Animation Options](https://developer.apple.com/documentation/uikit/uiview/animationoptions)
 
@@ -133,9 +139,3 @@ let animator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
 
 animator.startAnimation(afterDelay: 2.0)
 ```
-
----
-
----
-
-# Transition
