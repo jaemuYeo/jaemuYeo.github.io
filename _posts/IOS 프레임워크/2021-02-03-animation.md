@@ -69,9 +69,70 @@ duration은 3초이고 animations에서는 alpha와 backgroundColor이 바뀌는
 
 마지막으로 completion을 통해 애니메이션 종료 후 다시 duration을 통해 3초동안 reset되었다.
 
+**이 외 메서드**
+
+스프링처럼 튕기는 애니메이션 구현
+
+<img width="576" alt="스크린샷 2021-02-04 오후 4 35 13" src="https://user-images.githubusercontent.com/70311145/106859859-fb638480-6706-11eb-8d32-4a77305fd632.png">
+
+[Animation Options](https://developer.apple.com/documentation/uikit/uiview/animationoptions)
+
+여러가지 옵션들을 otions파라미터에서 배열로 받아서 구현할 수 있다.
+
 ---
 
 ## [UIViewPropertyAnimation](https://developer.apple.com/documentation/uikit/uiviewpropertyanimator)
+
+Property Animator는 ios 10+에서부터 새롭게 도입되었다.
+
+위의 내용인 UIViewAnimation을 대체하는 새로운 API를 제공한다.
+
+UIViewAnimation에 비해 다양한 장점을 가지고 있다.
+
+- 애니메이션 상태 제어
+- 애니메이션 일시중지 또는 완전히 중지하는 메서드를 제공
+- UIViewAnimation에서 제공하는 Timing Curve 모두 지원
+- Bezier Timing Curve를 통해 직접만들 수 있는 API를 함꼐 제공
+- 이미 시작 된 애니메이션에 새로운 애니메이션을 동적으로 추가할 수 있음
+- Interactive Animations 구현 가능
+
+Property Animator의 세가지 상태
+
+- Inactive상태에서 시작 또는 정지를 하면 Active상태로 전환
+
+- Active상태에서 애니메이션이 정상적으로 종료되면 다시 Inactive 상태로 전환
+
+- Active상태에서 애니메이션을 직접 중지하면 Stopped상태로 전환( 애니메이션이 완료되지 않은 상태)
+
+- Stopped상태에서 애니메이션을 다시 시작하려면 메서드를 호출해서 수동으로 완료 -> Inactive상태
+
+### UIViewAnimation과 UIPropertyAnimation 코드 비교해보기
+
+```swift
+// UIViewAnimation
+UIView.animate(withDuration: 3, delay: 0, option: [], animations: {
+    self.colorView.backgroundColor = UIColor.orange
+})
+
+// UIPropertyAnimation
+UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 3, delay: 0, option: [], animations: {
+    self.colorView.backgroundColor = UIColor.orange
+})
+```
+
+구현방법이 비슷한 면이 있지만 UIViewPropertyAnimator는 Property처럼 사용하능하다.
+
+애니메이션을 선언하고 여러 메서드를 붙여주어 상태를 제어할 수 있다.
+
+start, pause, stop, finish 등의 제어가 가능하다.
+
+```swift
+let animator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
+    self.colorView.backgroundColor = UIColor.orange
+}
+
+animator.startAnimation(afterDelay: 2.0)
+```
 
 ---
 
