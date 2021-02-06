@@ -26,7 +26,7 @@ Transition 알아보기
 
 ### [Transition](https://developer.apple.com/documentation/uikit/uiview/1622574-transition)
 
-view transition은 보통 동일한 컨테이너뷰에 속한 서브뷰 사이에 실행된다.
+View Transition은 보통 동일한 컨테이너뷰에 속한 서브뷰 사이에 실행된다.
 
 파라미터는 animate와 비슷한 형식으로 구현되어있다.
 
@@ -86,3 +86,29 @@ options에서 showHideTransitionViews를 추가하면 메서드가 뷰 계층을
 isHidden 속성을 토글한다. 이 옵션을 사용하게 되면 transition이 실행되는 동안에
 
 뷰가 뷰 계층에서 제거되거나 추가되지 않기때문에 뷰가 약한참조로 연결되어도 문제가 없다.
+
+---
+
+## Transition Options 한눈에 보기
+
+### Flipping
+
+- transitionFlipFromLeft
+
+- transitionFlipFromRight
+
+- transitionFlipFromTop
+
+- transitionFlipFromBottom
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/70311145/107126049-dc284b00-68f0-11eb-84ff-2720f2978f5e.gif)
+
+### Culing & Other
+
+- transitionCurlUp
+
+- transitionCurlDown
+
+- transitionCrossDissolve (Other)
+
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/70311145/107126356-bef47c00-68f2-11eb-8129-4bb59dee3991.gif)
