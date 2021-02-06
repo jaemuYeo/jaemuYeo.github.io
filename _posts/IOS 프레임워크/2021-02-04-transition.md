@@ -103,7 +103,7 @@ isHidden 속성을 토글한다. 이 옵션을 사용하게 되면 transition이
 
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/70311145/107126049-dc284b00-68f0-11eb-84ff-2720f2978f5e.gif)
 
-### Culing & Other
+### Curling & Other
 
 - transitionCurlUp
 
