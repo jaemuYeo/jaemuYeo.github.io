@@ -1,3 +1,27 @@
+---
+title: "UIKit) Presentation"
+
+categories:
+  - ios
+
+tags:
+  - [UIKit, framework]
+
+toc: true
+
+toc_sticky: true
+
+date: 2021-02-06
+
+last_modified_at: 2021-02-06
+---
+
+Presentation 알아보기
+
+이 글의 전반적인 내용은 [KXCoding](https://kxcoding.com/)을 참고하였습니다.
+
+---
+
 # [View Controller Presentation](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/PresentingaViewController.html)
 
 뷰 컨트롤러로 구현한 UI를 화면에 표시하는 방법은 두가지가 있다.
