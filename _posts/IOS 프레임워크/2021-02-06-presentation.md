@@ -68,3 +68,29 @@ Presentation Context는 새로운 화면을 표시할 프레임을 제공하고
 Presented VC는 이 프레임에 표시된다.
 
 <img width="545" alt="스크린샷 2021-02-07 오후 3 39 13" src="https://user-images.githubusercontent.com/70311145/107138882-a61fb100-695a-11eb-978c-7f9d06af7876.png">
+
+스토리보드에서 Present를 연결할 때에는 세그에서 Present Modally를 사용하고
+
+다시 화면을 되돌아갈 때에는 버튼을 통해 Dismiss가 된다.
+
+<img width="768" alt="스크린샷 2021-02-07 오후 4 00 38" src="https://user-images.githubusercontent.com/70311145/107139432-68248c00-695e-11eb-89c1-e54fb82068d6.png">
+
+![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/70311145/107139396-33b0d000-695e-11eb-8a72-853f2791e67c.gif)
+
+Presentation의 스타일은 이렇게 있다.
+
+<img width="258" alt="스크린샷 2021-02-07 오후 4 01 08" src="https://user-images.githubusercontent.com/70311145/107139434-6b1f7c80-695e-11eb-831e-112ae0a0025a.png">
+
+코드를 이용하여 Presentation을 구현할 때에는 스토리보드 ID를 사용한다.
+
+identifier를 통해 Present할 스토리보드를 선택해주고,
+
+present(animated:completion:) 메서드를 사용하면 된다.
+
+<img width="817" alt="스크린샷 2021-02-07 오후 4 15 20" src="https://user-images.githubusercontent.com/70311145/107139593-b9814b00-695f-11eb-8229-14218efe8005.png">
+
+present로 이동한 화면은 dismiss(animated:completion:) 메서드로 제거한다.
+
+<img width="465" alt="스크린샷 2021-02-07 오후 4 15 26" src="https://user-images.githubusercontent.com/70311145/107139595-bbe3a500-695f-11eb-8e28-a5675712d430.png">
+
+---
