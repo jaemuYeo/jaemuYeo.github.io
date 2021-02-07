@@ -24,6 +24,8 @@ Presentation 알아보기
 
 # [View Controller Presentation](https://developer.apple.com/library/archive/featuredarticles/ViewControllerPGforiPhoneOS/PresentingaViewController.html)
 
+## Presentation
+
 뷰 컨트롤러로 구현한 UI를 화면에 표시하는 방법은 두가지가 있다.
 
 컨테이너 뷰컨트롤러에 포함하거나 표시하는 것이 있고
@@ -77,7 +79,9 @@ Presented VC는 이 프레임에 표시된다.
 
 ![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/70311145/107139396-33b0d000-695e-11eb-8a72-853f2791e67c.gif)
 
-Presentation의 스타일은 이렇게 있다.
+Presentation의 스타일은 Presentation Context가 제공하는 프레임 내에서
+
+Presented VC를 표시하는 방법을 설정한다.
 
 <img width="258" alt="스크린샷 2021-02-07 오후 4 01 08" src="https://user-images.githubusercontent.com/70311145/107139434-6b1f7c80-695e-11eb-831e-112ae0a0025a.png">
 
@@ -94,3 +98,91 @@ present로 이동한 화면은 dismiss(animated:completion:) 메서드로 제거
 <img width="465" alt="스크린샷 2021-02-07 오후 4 15 26" src="https://user-images.githubusercontent.com/70311145/107139595-bbe3a500-695f-11eb-8e28-a5675712d430.png">
 
 ---
+
+## Present Transition Style
+
+- Cover Vertical - 기본 효과 밑에서 위로 모달방식
+
+- Flip Horizontal - 뒤집는 효과
+
+- Cross Dissolve - 페이드 효과
+
+- Partial Curl - 페이지를 넘기듯한 효과 (풀 스크린에서만 사용가능, 모달방식 사용불가)
+
+UIModalTransitionStyle 열거형을 통해 Transition을 적용
+
+![스크린샷 2021-02-07 오후 5 34 59](https://user-images.githubusercontent.com/70311145/107141243-d40cf180-696a-11eb-8f08-9ab5582c932c.png)
+
+---
+
+## Custom Presentation
+
+VC에 화면을 표시하는 것은 Presentation Controller러가 담당한다.
+
+이 컨트롤러는 Presented Controller가 dismiss되기 전까지 VC를 관리한다.
+
+Presented Controller는 presented VC를 표시할 프레임을 설정하고, Transition 애니메이션을 실행한다.
+
+Transition 과정에 추가되는 커스텀 뷰를 관리하는 것도 Presentation Controller의 역할이다.
+
+Presentation Controller는 **UIPresentationController**로 구현되어있다.
+
+Custom Presentation을 구현할 때에는 UIPresentationController를 서브클래싱하고,
+
+Transitioning Delegate를 구현한다.
+
+Presentation은 세단계로 시작한다.
+
+<img width="227" alt="스크린샷 2021-02-07 오후 5 50 39" src="https://user-images.githubusercontent.com/70311145/107141577-04558f80-696d-11eb-9b41-2565a9fc8ae1.png">
+
+### Presentation 단계
+
+Transition이 시작되고 새로운 화면이 표시되는 단계이다.
+
+Transitioning Delegate에게 커스텀 프레젠테이션 컨트롤러를 요청하고
+
+Delegate에서 컨트롤러를 리턴하면 커스텀 프레젠테이션이 시작된다.
+
+- PresentationTRansitionWillBegin() - Transition에 추가되는 커스텀 뷰를 추가하고 애니메이션에 필요한 속성을 설정하는 코드를 구현
+
+이어서 Transition이 실행된 후에 화면이 전환된다.
+
+Transition이 실행되는 동안 프레젠테이션 컨트롤러에서 아래 두 메서드가 연달아 호출된다.
+
+- ContainerViewWillLaoutSubviews() - Transition에 사용되는 커스텀 뷰 배치를 구현
+
+- ContainerViewDidLayoutSubviews() - Transition에 사용되는 커스텀 뷰 배치를 구현
+
+트렌지션이 완료된 후에는 아래 메서드가 호출된다.
+
+- PresentationTransitionDidEnd()
+
+여기까지 구현된 후 Presentation 단계가 종료되고 Management 단계로 전환된다.
+
+### Management
+
+Management에서는 디바이스 회전과 같은 이벤트를 처리한다.
+
+프레임의 크기가 업데이트되면 트렌지션 컨트롤러에서 아래 메서드가 호출된다.
+
+- viewWillTransition(to:with:)
+
+오토레이아웃을 구현했다면 Management단계에서 처리해야할 대부분의 작업이 자동으로 처리된다.
+
+오토레이아웃이 되어있지 않은 뷰가 추가되어있다면 프레임을 직접 업데이트 해야한다.
+
+### Dismissal
+
+Presented VC를 닫으면 Dismissal 단계가 시작된다.
+
+- dismissalTransitionWillBegin() - 호출되고나서 Transition이 실행된다.
+
+애니메이션이 실행되는 동안 아래 두 메서드가 연달아서 호출된다.
+
+- containerViewWillLayoutSubviews()
+
+- containerViewDidLaoutSubviews()
+
+Transition이 완료되면 아래 메서드가 호출된다.
+
+- dismissalTransitionDidEnd()
