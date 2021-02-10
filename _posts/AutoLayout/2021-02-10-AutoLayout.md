@@ -2,7 +2,7 @@
 title: "UIKit) Auto Layout"
 
 categories:
-  - layout
+  - AutoLayout
 
 tags:
   - [UIKit, framework]
