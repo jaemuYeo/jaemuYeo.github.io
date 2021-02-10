@@ -18,6 +18,8 @@ last_modified_at: 2021-02-10
 
 # [Auto Layout](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html)
 
+## Overview
+
 오토 레이아웃은 해당 뷰에 적용된 제약 조건에 따라 뷰 계층 구조에있는 모든 뷰의 크기와 위치를 동적으로 계산한다.
 
 지금까지 나온 모든 디바이스와 앞으로 나올 디바이스의 해상도와 스케일을 모두 암기할 필요는 없다.
@@ -83,3 +85,11 @@ UI를 구성하는 방식에는 변화가 있다.
   Size Class를 통해 UI를 표시할 수 있는 영역의 크기를 큰 틀에서 구분하고,
 
   Trait Collection을 통해 상세한 인터페이스 환경을 구분하는 방식으로 변경되었다.
+
+---
+
+## Frame-Based Layout & Autoresizing Mask
+
+오토 레이아웃을 사용하는 요즘은 Frame-Based Layout와 Autoresizing Mask를
+
+사용하는 경우가 잘 없지만 여전히 활용가치가 있기에 알고 넘어가야하는 방식이다.
