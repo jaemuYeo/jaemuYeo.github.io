@@ -28,7 +28,7 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "ios" %}
+                    {% if category[0] == "AutoLayout" %}
                         <li><a href="/categories/layout" class="">Auto Layout ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
