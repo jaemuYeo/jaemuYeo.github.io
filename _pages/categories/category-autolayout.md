@@ -3,7 +3,7 @@ title: "Auto Layout 공부"
 
 layout: archive
 
-permalink: categories/layout
+permalink: categories/AutoLayout
 
 author_profile: true
 
