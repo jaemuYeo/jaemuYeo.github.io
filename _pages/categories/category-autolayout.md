@@ -1,5 +1,5 @@
 ---
-title: "Auto Layout 공부"
+title: "Layout 공부"
 
 layout: archive
 
