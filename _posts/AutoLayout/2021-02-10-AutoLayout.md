@@ -1,5 +1,5 @@
 ---
-title: "UIKit) Auto Layout"
+title: "ios) 오토레이아웃 1"
 
 categories:
   - AutoLayout
@@ -88,8 +88,48 @@ UI를 구성하는 방식에는 변화가 있다.
 
 ---
 
-## Frame-Based Layout & Autoresizing Mask
+## springs and struts
 
 오토 레이아웃을 사용하는 요즘은 Frame-Based Layout와 Autoresizing Mask를
 
 사용하는 경우가 잘 없지만 여전히 활용가치가 있기에 알고 넘어가야하는 방식이다.
+
+springs and struts는 Frame-Based Layout와 Autoresizing Mask를 통합해서 지칭한다.
+
+<img width="953" alt="스크린샷 2021-02-11 오후 3 03 22" src="https://user-images.githubusercontent.com/70311145/107607185-daa5ac80-6c7b-11eb-9090-4fc2c4e22b1e.png">
+
+스토리보드에 뷰를 올리고 오른쪽 인스펙터에서 x,y와 넓이 높이를 지정해주면
+
+뷰의 프레임이 입력된 값으로 업데이트 된다.
+
+springs and struts에서는 여기에서 입력한 프레임이 디자인 타임의 프레임인 동시에 런타임의 프레임이다.
+
+인터페이스 빌더에서 뷰를 추가하고 아무런 제약도 추가하지 않으면 뷰의 프레임을 기반으로
+
+제약을 자동으로 추가해준다. 이 제약을 **Prototyping Constraint**라고 한다.
+
+만약 제약을 직접 추가한다면 사이즈 인스펙터에서 입력한 프레임 값은 디자인 타임의 프레임일 뿐
+
+런타임 프레임은 아니다. 또한 Prototyping Constraint도 더 이상 추가되지 않는다.
+
+- 오토 레이아웃에서 최종 프레임 값을 결정하는 요소는 오토 레이아웃이다. 프레임을 변경하고 싶다면 사이즈 인스펙터에서 프레임을 수정하는 것이 아니라 관련 된 제약을 수정해야 한다.
+
+<img width="255" alt="스크린샷 2021-02-11 오후 3 22 08" src="https://user-images.githubusercontent.com/70311145/107607558-ecd41a80-6c7c-11eb-87d6-6136c5767ac2.png">
+
+오토 리사이징 항목은 두개의 영역으로 구분되어 있다.
+
+왼쪽 항목은 빨간색 선을 통해 오토 리사이징 마스크를 설정할 수 있다.
+
+오른쪽 항목은 설정된 마스크에 따라서 뷰의 프레임이 어떻게 업데이트 되는지 미리보기를 지원한다.
+
+왼쪽에 항목을 다시 보면 큰 네모 안에 작은 네모를 통해 선이 구분되어있다.
+
+바깥에 있는 선들은 Top, Right, Bottom, Left의 여백을 설정할 수 있고, 실선으로 표시된 부분은
+
+상위 뷰의 크기에 따라 여백의 크기가 자동으로 변경된다.
+
+빨간색으로 선택된 부분은 fixed margin이라 부르고 실선으로 표시된 곳은 flexible margin이라고 부른다.
+
+작은 네모안에 있는 두개의 선은 각각 너비와 높이를 나타낸다.
+
+마스크가 선택되어 있지 않다면 고정된 크기로 표시되고, 선택이 되면 상위 뷰의 크기에 따라 자동으로 변경된다.
