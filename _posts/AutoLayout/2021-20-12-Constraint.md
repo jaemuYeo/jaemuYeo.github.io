@@ -326,4 +326,114 @@ Multiplier의 값이 2로 변경된다. 오토레이아웃 입장에서 보면 �
 
 ### Constant
 
+Constant를 번역하면 상수이지만 평소에 알고있던 상수는 값을 변경할 수 없다의 뜻을 가지지만
+
+다른 속성들은 제약을 추가한 후에 변경할 수 없지만 Constant는 제약을 생성한 후에도 변경할 수 있다.
+
+그래서 런타임에 제약을 업데이트하는 용도로 자주 활용된다.
+
 <img width="375" alt="스크린샷 2021-02-12 오후 9 35 08" src="https://user-images.githubusercontent.com/70311145/107768722-3e160400-6d7a-11eb-8963-b79e9799d37a.png">
+
+인터페이스에는 오렌지 뷰가 있고 수직, 수평 가운데 정렬과 너비와 높이가 설정되어있다.
+
+<img width="237" alt="스크린샷 2021-02-12 오후 11 46 38" src="https://user-images.githubusercontent.com/70311145/107782567-91914d80-6d8c-11eb-83f1-7f86f32a336d.png">
+
+Width Equals의 Edit를 보면 Constant에 240의 값이 입력되어있다.
+
+Width나 Height의 경우 Constant 값 그 자체가 최종값이 된다.
+
+<img width="246" alt="스크린샷 2021-02-12 오후 11 21 30" src="https://user-images.githubusercontent.com/70311145/107779678-0e222d00-6d89-11eb-99e4-4d8bf8b666fb.png">
+
+그래서 Constant 값을 400으로 바꾸면 Width 제약이 400 포인트로 변경된다.
+
+<img width="750" alt="스크린샷 2021-02-12 오후 11 23 33" src="https://user-images.githubusercontent.com/70311145/107779899-57727c80-6d89-11eb-82f6-9bb7f480c1f8.png">
+
+이번에는 Align Center X의 Constant 값을 30으로 가운데 정렬 된 상태에서
+
+30포인트만큼 오른쪽으로 이동한다. 이러한 경우에는 최종값이 아닌
+
+정렬 후에 부가적으로 추가할 값이 된다.
+
+![스크린샷 2021-02-12 오후 11 25 47](https://user-images.githubusercontent.com/70311145/107780156-aae4ca80-6d89-11eb-9aee-7c818838f2ac.png)
+
+반대로 음수를 입력하면 가운데 정렬 된 상태에서 왼쪽으로 이동하게 된다.
+
+하지만 Constant 값은 가능한 0이나 양수로 지정하는 것이 좋다.
+
+그래서 옳바른 방법으로는 Multiplier에서 했던 것 처럼 First Item과 Second Item을 스위치하고,
+
+Constant 값을 양수로 설정하는 것이 좋다.
+
+코드를 통해 width제약과 height제약을 변경하는 것을 알아보자!
+
+씬에 추가한 모든 것들은 아웃렛으로 연결할 수 있고, 제약 또한 마찬가지다.
+
+추가된 제약에서 width와 height를 아웃렛으로 연결해주고 직접 접근해서 Constant 값을 변경하면 된다.
+
+아래의 코드를 통해 changeFrame 버튼을 누르면 orangeView의 너비와 높이가 각각 100으로 변경된다.
+
+<img width="528" alt="스크린샷 2021-02-12 오후 11 38 34" src="https://user-images.githubusercontent.com/70311145/107781636-7245f080-6d8b-11eb-8955-33c2fe9d4283.png">
+
+---
+
+### Priority (우선 순위)
+
+Priority 속성은 1000 ~ 1 사이의 값으로 제약의 우선순위를 지정한다.
+
+1000은 필수 제약을 의미하고 이보다 작은 값은 모두 옵션 제약이 된다.
+
+오렌지 뷰가 있고 수직, 수평 가운데 정렬과 너비와 높이가 설정되어있다.
+
+<img width="237" alt="스크린샷 2021-02-12 오후 11 46 38" src="https://user-images.githubusercontent.com/70311145/107782567-91914d80-6d8c-11eb-83f1-7f86f32a336d.png">
+
+제약을 추가할 때는 일반적으로 제약의 종류별로 하나씩 추가한다.
+
+하지만 경우에 따라 같은 종류의 제약을 두개이상 추가할 수 있다.
+
+기존에 너비 제약이 추가되어있는 상태에서 또 하나의 100의 값인 너비 제약을 추가하면
+
+Equal 뱃지를 보면 Relation이 Greater Than or Equal로 설정되어있다.
+
+보통 제약을 추가하면 Relation이 Equal로 추가되는데 같은 제약을 서로다른 Constant 값으로
+
+추가하면 제약이 충돌하므로 Xcode에서는 제약 충돌을 방지하기 위해 Greater Than or Equal지정한 것이다.
+
+<img width="629" alt="스크린샷 2021-02-12 오후 11 49 40" src="https://user-images.githubusercontent.com/70311145/107782938-03699700-6d8d-11eb-8e43-7fc47797000d.png">
+
+두번째로 추가헀던 너비의 제약을 선택후 Relation을 Equal로 설정하고
+
+Priority 값을 999로 설정하게되면 우선순위로 설정된 첫번째 너비의 제약 값으로 남아있다.
+
+프레임을 계산할 때 제약의 우선순위를 통해서 어떤 제약을 선택해야 하는지 확실하게 판단할 수 있기 때문이다.
+
+Constant가 100인 제약은 여전히 뷰에 추가되어 있지만 우선순위가 더 높은 제약이 있고
+
+다른 제약에 영향을 주지 않으므로 프레임 계산에서 무시된다.
+
+<img width="819" alt="스크린샷 2021-02-12 오후 11 55 24" src="https://user-images.githubusercontent.com/70311145/107783587-c9e55b80-6d8d-11eb-9594-8864bf1602a7.png">
+
+Document Outline에서 제약의 이름을 보면 @999가 추가되어 있다.
+
+제약이 옵션 제약인 경우에는 우선순위가 함께 표시된다.
+
+<img width="249" alt="스크린샷 2021-02-12 오후 11 59 12" src="https://user-images.githubusercontent.com/70311145/107784033-51cb6580-6d8e-11eb-80a8-361c914fde62.png">
+
+코드를 통해 Priority 속성을 버튼을 통해 토글하는 방법을알아보자!
+
+우선 순위를 생성자로 전달해서 UILayoutPriority 인스턴스를 만들고, 이 인스턴스를 Priority 속성에 할당하면 된다.
+
+우선 순위가 1000이었던 너비의 Prority를 800으로 설정해주고나서
+
+<img width="260" alt="스크린샷 2021-02-13 오전 12 26 48" src="https://user-images.githubusercontent.com/70311145/107787240-2d718800-6d92-11eb-96ac-cdd2d8dd134a.png">
+
+코드를 통해 우선순위를 동적으로 변경할 때에는 제약의 우선순위를 1000보다 작은 값으로
+
+설정해두어야 오류가 나지 않는다.
+
+<img width="1015" alt="스크린샷 2021-02-13 오전 12 23 16" src="https://user-images.githubusercontent.com/70311145/107786920-c9e75a80-6d91-11eb-9379-e828d4f0b4f8.png">
+
+Toggle 버튼을 클릭하면 두 제약의 우선순위가 변경되면서 UI가 동적으로 업데이트 된다.
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/70311145/107787045-eedbcd80-6d91-11eb-9034-ac61d00310b2.gif)
+
+Priority의 패턴을 잘 활용하면 조건에 따라서 동적으로 업데이트 되는 UI를 다양하게 구현할 수 있다.
