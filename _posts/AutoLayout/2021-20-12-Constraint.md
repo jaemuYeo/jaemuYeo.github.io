@@ -40,12 +40,6 @@ class NSLayoutConstraint : NSObject
 
 <img width="613" alt="스크린샷 2021-02-12 오후 5 56 15" src="https://user-images.githubusercontent.com/70311145/107747969-ad303000-6d5b-11eb-8f83-2876760d636d.png">
 
-```
-item.attribute1 = muliplier * item2.attribute2 + constant
-item.attribute1 >= muliplier * item2.attribute2 + constant
-item.attribute1 <= muliplier * item2.attribute2 + constant
-```
-
 Item1 - 방정식의 첫 번째 항목이다. 항목은 뷰 또는 레이아웃 가이드이어야 한다.
 
 Attribute1 - item1에 제한 될 속성이다. (제약을 지정할 속성)
@@ -60,7 +54,7 @@ Attribute2 - 두 번째 항목에 제한 될 속성이다. Item2가 비어 있�
 
 Constant - 상수, 부동 소수점 오프셋
 
-### 공식 알아보기
+---
 
 캔버스에 뷰를 올리고 Top은 100, Leading은 50으로 제약을 추가한다.
 
@@ -190,3 +184,146 @@ Document Outline을 보면 width, height와 달리 centerX, centerY 제약은 �
 ## AspectRatio (종횡비)
 
 종횡비는 너비나 높이를 기준으로 나머지 부분이 계산되는 제약이기에 반드시 width, height 제약을 추가해야한다.
+
+가운데 정렬을 해주고 Aspect Ratio항목을 선택한다.
+
+<img width="302" alt="스크린샷 2021-02-12 오후 7 50 26" src="https://user-images.githubusercontent.com/70311145/107759454-af01ef80-6d6b-11eb-904c-e145da49215c.png">
+<img width="265" alt="스크린샷 2021-02-12 오후 7 50 36" src="https://user-images.githubusercontent.com/70311145/107759458-b0cbb300-6d6b-11eb-9d9c-3e5125eac60b.png">
+
+비쥬얼 인디케이터를 보면 너비와 높이 제약이 추가된 것 처럼 보이지만 Aspect Ratio제약이다.
+
+종횡비를 계산할 수 있는 기준이 없기때문에 현재는 제약 오류가 발생한다.
+
+<img width="298" alt="스크린샷 2021-02-12 오후 7 51 08" src="https://user-images.githubusercontent.com/70311145/107759463-b1fce000-6d6b-11eb-9aca-0b7abf938706.png">
+
+뷰에 너비 제약을 추가하게 되면 모든 제약 오류가 사라지고,
+
+뷰의 높이는 뷰의 width 제약과 Aspect Ratio제약을 기준으로 계산된다.
+
+이와 같이 Aspect Ratio를 추가할 때는 너비 또는 높이의 기준을 통해 계산한다는 것을 알고있어야 한다.
+
+<img width="294" alt="스크린샷 2021-02-12 오후 8 53 58" src="https://user-images.githubusercontent.com/70311145/107765012-71ee2b00-6d74-11eb-96bf-fb1a9f97b54e.png">
+
+---
+
+## Baseline
+
+완쪽의 Label에 Top과 Bottom 제약을 추가하고 오른쪽 Label에서 컨트롤 드래그를 통해
+
+왼쪽과 Horizontal Spacing, First Baseline 제약을 추가하면 정상적으로 제약이 추가된다.
+
+<img width="340" alt="스크린샷 2021-02-12 오후 9 04 07" src="https://user-images.githubusercontent.com/70311145/107765873-efff0180-6d75-11eb-8f69-28118cd245d3.png">
+
+결과를 보면 프레임이 아닌 Label이 출력하고 있는 텍스트를 기준으로 정렬된다.
+
+즉, 프레임이 아니라 뷰의 내용으로 정렬 된다.
+
+<img width="302" alt="스크린샷 2021-02-12 오후 9 04 39" src="https://user-images.githubusercontent.com/70311145/107765883-f2615b80-6d75-11eb-8a2a-15300e0603da.png">
+
+---
+
+## 공식 알아보기
+
+위에서 잠깐 지나갔던 내용중에는 다음과 같은 세개의 공식이 있다.
+
+### Relation
+
+<img width="387" alt="스크린샷 2021-02-12 오후 9 34 24" src="https://user-images.githubusercontent.com/70311145/107768714-3c4c4080-6d7a-11eb-9019-7af67decf084.png">
+
+- Equal(=)
+
+- Less Than or Equal (>=)
+
+- Greater Than or Equal (<=)
+
+아래의 Label은 Top, Leading, Bottom이 각각 설정 되어있고, height가 36으로 설정되어있다.
+
+![스크린샷 2021-02-12 오후 9 17 42](https://user-images.githubusercontent.com/70311145/107767093-cf37ab80-6d77-11eb-8504-a9826653e073.png)
+
+Relation Equal 텍스트에서 height 제약을 선택하고 인스펙터에서 Relation을
+
+Less Than or Equal로 바꿔주면 Label의 높이가 텍스트를 표시하는데 필요한 Intrinsic Size로 표시된다.
+
+<img width="415" alt="스크린샷 2021-02-12 오후 9 20 25" src="https://user-images.githubusercontent.com/70311145/107767321-26d61700-6d78-11eb-9027-93c794952843.png">
+
+이번에는 Relation에서 Greater Than or Equal로 설정해주고
+
+제일 아래에 있는 Label의 Bottom을 0으로 설정해주면 아래와 같이 나타난다.
+
+밑에 두 Label의 Relation은 Equal이기 때문에 항상 설정된 Constant로 표시되지만
+
+첫번째 Label은 Greater Than or Equal로 설정되어 있기 때문에
+
+height인 36포인트보다 큰 값을 표시한다.
+
+<img width="628" alt="스크린샷 2021-02-12 오후 9 24 56" src="https://user-images.githubusercontent.com/70311145/107767909-06f32300-6d79-11eb-8277-cc90d5bc9725.png">
+
+<img width="343" alt="스크린샷 2021-02-12 오후 9 26 02" src="https://user-images.githubusercontent.com/70311145/107767899-05295f80-6d79-11eb-876b-6c124ede76e6.png">
+
+---
+
+### Multiplier
+
+<img width="372" alt="스크린샷 2021-02-12 오후 9 34 42" src="https://user-images.githubusercontent.com/70311145/107768719-3d7d6d80-6d7a-11eb-8ef9-82f2caf01fce.png">
+
+Multiplier는 제약 공식에서 두번째 항목에 적용할 승수를 나타내고 기본값은 1이다.
+
+제약을 추가할 때 비율을 지정할 수 있다고 생각하면 이해하기 쉽다.
+
+그린 뷰에는 너비와 높이가 지정되어 있고, x,y축의 가운데 정렬이 되어있다.
+
+오렌지 뷰에는 그린뷰와의 간격곽 Equal width, Equal height가 설정되어있다.
+
+<img width="306" alt="스크린샷 2021-02-12 오후 9 42 29" src="https://user-images.githubusercontent.com/70311145/107769371-3acf4800-6d7b-11eb-8ce7-7ed16e2087d6.png">
+
+오렌지 뷰를 선택 후 사이즈 인스펙터에서 Equal height의 Edit항목을 선택하면
+
+Multiplier의 값이 기본 값인 1로 설정되어 있는데 아래와 같이 2로 바꿔주면
+
+그린 뷰의 height의 두배 값으로 늘어난 것을 볼 수 있다.
+
+그리고 제약의 이름이 Proportional Height to: 로 변경되었다.
+
+<img width="776" alt="스크린샷 2021-02-12 오후 9 44 34" src="https://user-images.githubusercontent.com/70311145/107769551-82ee6a80-6d7b-11eb-913a-28d6fdeb0d19.png">
+
+이번에는 오렌지 뷰의 Equal width 값을 0.5로 주면 그린 뷰 너비의 절반으로 표시되고
+
+제약의 이름이 Proportional Width to: 로 변경되었다.
+
+<img width="823" alt="스크린샷 2021-02-12 오후 9 47 28" src="https://user-images.githubusercontent.com/70311145/107769852-eaa4b580-6d7b-11eb-8070-04bb56e8f3e7.png">
+
+Multiplier의 값을 0.5와 같이 실수로 지정할 수도 있지만 가능하다면 정수로 지정하는 것이 좋다.
+
+계산과정에서 발생할 수 있는 오차를 줄일 수 있기 때문이다.
+
+위의 방식에서는 공식에 있는 Item2에 그린 뷰를 넣고 Item1에 오렌지 뷰를 너비를 계산했다.
+
+Item1과 Item2를 바꾸고 Multiplier를 2로 바꾸면 실수로 지정했던 방법과 동일한 방법으로 구현할 수 있다.
+
+오렌지 뷰의 사이즈 인스펙터에서 Proportional Width to 항목을 더블클릭하면
+
+제약의 속성을 변경할 수 있는 화면으로 전환된다.
+
+First Item은 공식에서의 Item1을 의미하고, Second Item은 공식에서의 Item2를 의미한다.
+
+<img width="130" alt="스크린샷 2021-02-12 오후 10 07 18" src="https://user-images.githubusercontent.com/70311145/107771819-b1217980-6d7e-11eb-9b58-11e39699e5d8.png">
+
+First Item에서 Recerse First And Second Item을 클릭하면
+
+Multiplier의 값이 2로 변경된다. 오토레이아웃 입장에서 보면 오렌지 뷰의 너비를 설정할 때
+
+'오렌지 뷰의 너비는 그린 뷰의 절반이다'라고 설정하는 것과
+
+그린 뷰는 오렌지 뷰 너비의 두배이다'라고 설정하는 것이 동일하다.
+
+마찬가지로 그린 뷰와 오렌지 뷰의 수직 여백을 추가할 때 그린 뷰의 Bottom 제약을 추가하는 것과
+
+오렌지 뷰의 Top 제약을 추가하는 것 또한 동일하다.
+
+<img width="253" alt="스크린샷 2021-02-12 오후 10 08 52" src="https://user-images.githubusercontent.com/70311145/107772000-f645ab80-6d7e-11eb-8937-615baa63b4ac.png">
+
+---
+
+### Constant
+
+<img width="375" alt="스크린샷 2021-02-12 오후 9 35 08" src="https://user-images.githubusercontent.com/70311145/107768722-3e160400-6d7a-11eb-8963-b79e9799d37a.png">
