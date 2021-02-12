@@ -1,5 +1,5 @@
 ---
-title: "ios) 오토레이아웃 1"
+title: "ios) Auto Layout"
 
 categories:
   - AutoLayout
