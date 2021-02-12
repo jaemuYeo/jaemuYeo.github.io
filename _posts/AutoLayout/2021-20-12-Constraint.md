@@ -120,6 +120,73 @@ Document Outline에서 방금 추가한 제약을 확인해보면 뷰의 아래�
 
 다른 뷰와의 관계나 비율을 추가할 수 있다.
 
-Top과 Leading이 100으로 되어있고 너비와 높이가 각각 200인 ㄹ
+Top과 Leading이 각각 100으로 되어있고, 너비와 높이가 각각 200인 Label이 있다.
 
 <img width="609" alt="스크린샷 2021-02-12 오후 7 12 10" src="https://user-images.githubusercontent.com/70311145/107755505-3cdadc00-6d66-11eb-9844-b1b2f0904959.png">
+
+빨간색 뷰를 클릭해서 제약 팝업을 보면 Top에 가장 인접한 Lable이 연결되어 있다.
+
+때에 따라서 대상을 루트 뷰나 Safe Area로 변경할 수도 있다.
+
+<img width="732" alt="스크린샷 2021-02-12 오후 7 17 40" src="https://user-images.githubusercontent.com/70311145/107756070-fe91ec80-6d66-11eb-9847-2400809602ed.png">
+
+레드 뷰에서 Top과 Leading을 지정해주면 비쥬얼 인디케이터에서 빨간색으로 실선이 표시된다.
+
+그 이유는 레드 뷰의 너비와 높이를 판단할 수 없기 때문이다.
+
+<img width="364" alt="스크린샷 2021-02-12 오후 7 19 40" src="https://user-images.githubusercontent.com/70311145/107756233-46187880-6d67-11eb-85c7-d19ff7e3f285.png">
+
+레드 뷰에 너비와 높이를 지정해주면 정상적으로 제약이 추가되고 오류가 발생하지 않는다.
+
+Document Outline을 보면 뷰와 뷰끼리 연관되지 않은 height와 width 제약은 각각의 Label과 View의
+
+아래쪽에 추가되고 두 뷰와의 관계를 나타내는 제약은 최상위 뷰의 아래에 추가된 것을 확인할 수 있다.
+
+![스크린샷 2021-02-12 오후 7 25 54](https://user-images.githubusercontent.com/70311145/107756863-2766b180-6d68-11eb-8312-49061960e831.png)
+
+---
+
+## CenterX, CenterY
+
+이번 제약은 가운데 정렬 제약이다. 수평과 수직방향으로 추가할 수 있고, 컨테이너를 기준으로
+
+가운데 정렬하거나 두 개 이상의 뷰를 가운데 정렬 할 수 있다.
+
+Align메뉴를 클릭하고 Horizontal과 Vertical을 체크해주면 루트 뷰를 기준으로 정렬을 해준다.
+
+<img width="671" alt="스크린샷 2021-02-12 오후 7 31 07" src="https://user-images.githubusercontent.com/70311145/107757421-e02cf080-6d68-11eb-9b22-e90979ecd02c.png">
+
+```
+Tip. 너비와 높이의 제약을 주지 않았는데 오류가 발생하지 않는다??
+
+Label과 같이 뷰의 내용을 통해 크기를 유추할 수 있는 경우에는
+너비와 높이 제약을 생략할 수 있고 Intrinsic Content Size를 통해
+뷰의 크기를 표현한다.
+내용이 없는 일반적인 뷰는 너비와 높이를 항상 추가해주어야 오류가 발생하지 않는다.
+```
+
+이번에는 그린 뷰에 Top과 너비,높이 제약을 추가한다.
+
+<img width="693" alt="스크린샷 2021-02-12 오후 7 37 36" src="https://user-images.githubusercontent.com/70311145/107758204-e7a0c980-6d69-11eb-8840-18914b524d90.png">
+
+그리고 그린 뷰에서 Label로 컨트롤 드래그해서 Center Horizontally를 선택하면 두 뷰가 가운데 정렬된다.
+
+<img width="417" alt="스크린샷 2021-02-12 오후 7 38 25" src="https://user-images.githubusercontent.com/70311145/107758202-e5d70600-6d69-11eb-81cd-c3e93402fbd5.png">
+
+또 다른 방법으로는 정렬 할 두 뷰를 모두 선택하고 Align메뉴에서
+
+Vertical Centers 또는 Horizontal Centerrs를 통해 정렬을 하는 방법도 있다.
+
+<img width="652" alt="스크린샷 2021-02-12 오후 7 42 18" src="https://user-images.githubusercontent.com/70311145/107758584-70b80080-6d6a-11eb-8599-0c7de08b05e3.png">
+
+Document Outline을 보면 width, height와 달리 centerX, centerY 제약은 항상 공통된
+
+상위 뷰에 추가된다. 현재는 모두 루트 뷰 아래쪽에 추가되어있다.
+
+<img width="371" alt="스크린샷 2021-02-12 오후 7 44 05" src="https://user-images.githubusercontent.com/70311145/107758747-ae1c8e00-6d6a-11eb-8d4a-dc9780f22b7c.png">
+
+---
+
+## AspectRatio (종횡비)
+
+종횡비는 너비나 높이를 기준으로 나머지 부분이 계산되는 제약이기에 반드시 width, height 제약을 추가해야한다.
