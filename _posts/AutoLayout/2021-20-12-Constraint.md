@@ -492,4 +492,64 @@ Content Size Layout Constraint 제약이 자동으로 추가된다.
 
 ---
 
-## Content Hugging (CH)
+## Content Hugging (CH) & Compression Resistance (CR)
+
+두개의 속성을 보면 Priority가 붙어 있는데 위에서 보았던 제약의 우선순위처럼
+
+1000에서 1사이의 값으로 지정할 수 있는 우선순위이다.
+
+<img width="258" alt="스크린샷 2021-02-13 오후 9 12 02" src="https://user-images.githubusercontent.com/70311145/107849663-23a65e00-6e40-11eb-92ca-50147879c78c.png">
+
+이 우선순위는 뷰를 배치할 수 있는 공간의 크기가 Intrinsic Size와 다를 때
+
+너비와 높이 값이 커지거나 작아지는 우선순위를 지정한다.
+
+CH와 CR 모두 수평과 수직 방향으로 하나씩 우선순위를 지정할 수 있고,
+
+CH의 기본 값은 250 CR의 기본 값은 750이다.
+
+Intrinsic Size를 가진 뷰가 동일 선상에 두개 이상 배치되어 있을 때 의미를 가지게 된다.
+
+- Content Hugging - 프레임 확장에 대한 저항력
+
+  CH의 우선 순위가 1000이라면 가장 높은 저항력을 가지는 것이고,
+
+  어떠한 경우에도 너비나 높이가 Intrinsic Size를 초과하지 않는다.
+
+  우선 순위가 낮아질수록 저항력도 낮아지고, Intrinsic Size를 초과할 가능성이 높아진다.
+
+아래에는 Label과 TextField의 제약에 추가되어 배치되어있다.
+
+현재 Intrinsic Size와 CH를 통해 계산된 너비를 가지고 있다.
+
+현재 Label의 CH 값이 251, TextField의 CH 값이 250이로 설정되어 있어서
+
+프레임 확장에 대한 저항력이 더 높은 Label이 Intrinsic Size로 표시되고,
+
+상대적으로 낮은 TextField가 확장되어서 나머지 영역을 채우게 된다.
+
+<img width="279" alt="스크린샷 2021-02-13 오후 9 24 07" src="https://user-images.githubusercontent.com/70311145/107849944-d4612d00-6e41-11eb-959d-d031746bb556.png">
+
+TextField의 CH값을 260으로 바꾸게 되면 프레임 확장에 대한 저항력이 Label보다 높아지고
+
+TextField는 Intrinsic Size로 표시되고, Label이 나머지 영역을 채운다.
+
+<img width="276" alt="스크린샷 2021-02-13 오후 9 28 37" src="https://user-images.githubusercontent.com/70311145/107849999-7719ab80-6e42-11eb-8529-31438e454f11.png">
+
+혹여나 두 우선순위의 값이 같으면 제약 오류가 발생하고, 이 오류를 해결하는 방법으로는
+
+width을 추가하거나 Label과 TextField의 너비를 같게 만드는 Equal width 제약을 추가하는 것이다.
+
+- Compression Resistance - 프레임 축소에 대한 저항력
+
+  우선 순위가 1000으로 지정되어 있다면 어떤 경우에도 클리핑 없이 표시되지만
+
+  우선 순위가 낮아질 수록 프레임 축소에 대한 저항력이 낮아서
+
+  클리핑이 발생할 수도 있고, 경우에 따라 제약 오류가 발생한다.
+
+CR의 우선순위와 Width의 우선순위가 동일하다면 CR이 더 높은 우선순위를 가지게 된다.
+
+코드를 통해 동적으로 변경하는 경우에는 우선순위 지정에 주의해야한다.
+
+**UI를 설계할 때에는 되도록이면 CH, CR을 함께 고려해야하는 경우가 없도록해야한다.**
