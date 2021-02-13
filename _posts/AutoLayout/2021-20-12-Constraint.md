@@ -437,3 +437,59 @@ Toggle 버튼을 클릭하면 두 제약의 우선순위가 변경되면서 UI�
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/70311145/107787045-eedbcd80-6d91-11eb-9034-ac61d00310b2.gif)
 
 Priority의 패턴을 잘 활용하면 조건에 따라서 동적으로 업데이트 되는 UI를 다양하게 구현할 수 있다.
+
+---
+
+## Intrinsic Content Size
+
+오토레이아웃은 뷰의 크기를 계산할 때 먼저 width, height 제약을 확인한다.
+
+두 제약이 존재하지 않는다면 다른 제약이 통해 크기를 계산할 수 있는지를 확인한다.
+
+여전히 크기를 계산할 수 없다면 뷰가 출력하려는 내용을 통해 크기를 계산한다.
+
+옳바른 크기를 얻었다면 그 크기로 뷰를 출력하고, 얻지 못했다면 제약 오류가 발생한다.
+
+Intrinsic Content Size는 뷰의 내용을 출력하는데 필요한 크기이다.
+
+Intrinsic Content Size로 뷰를 출력하는 경우에는 내부적으로
+
+Content Size Layout Constraint 제약이 자동으로 추가된다.
+
+예를들어 루트 뷰안에 오렌지뷰를 올리고 Leading, Top의 제약만 추가했을 때에는
+
+너비와 높이의 값을 파악할 수 없기 때문에 제약 오류가 발생한다.
+
+<img width="357" alt="스크린샷 2021-02-13 오후 6 23 10" src="https://user-images.githubusercontent.com/70311145/107846636-9acff800-6e28-11eb-9353-d24d30420a65.png">
+
+너비와 높이의 제약을 주게되면 제약이 정상적으로 추가되는 것을 확인 할 수 있다.
+
+<img width="683" alt="스크린샷 2021-02-13 오후 6 23 36" src="https://user-images.githubusercontent.com/70311145/107846639-9d325200-6e28-11eb-92b1-c854b2bb731f.png">
+
+이번에는 버튼에 Leading, Top 제약만 주었더니 제약오류가 발생하지 않는다.
+
+뷰와는 다르게 너비와 높이에 대한 값이 없지만 정상적으로 제약이 추가되는 것을 볼 수있다.
+
+<img width="356" alt="스크린샷 2021-02-13 오후 6 24 33" src="https://user-images.githubusercontent.com/70311145/107846687-f0a4a000-6e28-11eb-8c87-468059d5301d.png">
+
+버튼 안에 있는 타이틀을 지워도 너비와 높이가 각각 30인 만큼의 크기가 자동으로 지정된다.
+
+이러한 이유는 버튼이라는 기능이 사용자에게 최소한의 터치를 제공해야하기 때문이다.
+
+<img width="358" alt="스크린샷 2021-02-13 오후 6 24 47" src="https://user-images.githubusercontent.com/70311145/107846688-f1d5cd00-6e28-11eb-8d80-05b33af8b77b.png">
+
+스위치도 버튼과 마찬가지로 Leading, Top의 제약만 주어도 제약오류는 발생하지 않는다.
+
+스위치 오브젝트 같은 경우는 높이와 너비의 기본값이 지정되어있으므려 따로 제약을 추가하지 않아도 된다.
+
+<img width="397" alt="스크린샷 2021-02-13 오후 6 29 22" src="https://user-images.githubusercontent.com/70311145/107846754-77f21380-6e29-11eb-9b94-4b64617f81f9.png">
+
+너비와 높이를 100으로 지정해 주어도 제약은 바뀌지만 UI의 변화는 없는 것을 확인할 수있다.
+
+<img width="664" alt="스크린샷 2021-02-13 오후 6 29 40" src="https://user-images.githubusercontent.com/70311145/107846756-79234080-6e29-11eb-9076-86bd0b85a6f4.png">
+
+이 외에도 다양한 오브젝트들의 제약을 추가해보고 Intrinsic Size에 어떤 영향을 주는지 알아보는 것이 좋다.
+
+---
+
+## Content Hugging (CH)
