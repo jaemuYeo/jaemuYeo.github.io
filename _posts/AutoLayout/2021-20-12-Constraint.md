@@ -494,6 +494,8 @@ Content Size Layout Constraint 제약이 자동으로 추가된다.
 
 ## Content Hugging (CH) & Compression Resistance (CR)
 
+<img width="466" alt="스크린샷 2021-02-13 오후 9 56 22" src="https://user-images.githubusercontent.com/70311145/107850515-56535500-6e46-11eb-89db-36a4c101e1d2.png">
+
 두개의 속성을 보면 Priority가 붙어 있는데 위에서 보았던 제약의 우선순위처럼
 
 1000에서 1사이의 값으로 지정할 수 있는 우선순위이다.
@@ -511,6 +513,8 @@ CH의 기본 값은 250 CR의 기본 값은 750이다.
 Intrinsic Size를 가진 뷰가 동일 선상에 두개 이상 배치되어 있을 때 의미를 가지게 된다.
 
 - Content Hugging - 프레임 확장에 대한 저항력
+
+  늘어나지 않으려고 버티는 힘.
 
   CH의 우선 순위가 1000이라면 가장 높은 저항력을 가지는 것이고,
 
@@ -541,6 +545,8 @@ TextField는 Intrinsic Size로 표시되고, Label이 나머지 영역을 채운
 width을 추가하거나 Label과 TextField의 너비를 같게 만드는 Equal width 제약을 추가하는 것이다.
 
 - Compression Resistance - 프레임 축소에 대한 저항력
+
+  외부에서 압력을 줄 때 버티는 힘.
 
   우선 순위가 1000으로 지정되어 있다면 어떤 경우에도 클리핑 없이 표시되지만
 
