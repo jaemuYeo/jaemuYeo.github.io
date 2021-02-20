@@ -202,4 +202,55 @@ class EventsViewController: UIViewController {
 
 ---
 
-## Adaptive Layout
+## [Adaptive Layout](https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/)
+
+실행환경에 따라사 가장 적합한 방식으로 동작하는 앱의 기술을 구현학고,
+
+모든 디바이스와 실행 환경에서 동작할 수 있는 하나의 UI를 개발하는 방법이
+
+Adaptive Layout이다.
+
+ios8 버전 이전에는 스토리보드에서 아이폰과 아이패드의 개발이 따로 분리되어있었지만
+
+Adaptive Layout에서는 디바이스의 독립적인 Universal Storyboard를 사용한다.
+
+Universal Storyboard는 다음의 중요한 세가지와 결합해서 모든 디바이스와
+
+실행환경에 적용이 가능한 단일 Layout을 구현한다.
+
+- Saze Class - 뷰를 배치할 수 있는 공간의 크기를 구분
+- Trait Collection - 세부적인 실행환경을 구분
+- Auto Layout
+
+Adaptive Layout은 뷰의 계층과 화면의 전환에도 영향을 준다.
+
+예를들어 아이폰 같은 작은 사이즈에서는 Push & Pop으로 화면 전환을 구현하고,
+
+화면이 큰 아이패드의 경우 목록과 내용이 함께 표시된다.
+
+### Size Class
+
+Size Class는 인터페이스의 크기를 두개로 표현한다.
+
+Class는 계층이나 종류를 의미하고(swift 문법의 class X)한다.
+
+- **Regular** class - 너비나 높이가 비교적 크다는 것을 의미
+- **Compact** class - 너비나 높이가 비교적 작다는 것을 의미
+- **Any** class - 어느 한 방향의 클래스를 지정하지 않는다는 의미
+
+Horizontal 또는 Vertical 사이즈 클래스를 통해서 너비와 높이에 해당하는 클래스를 개별적으로 지정한다.
+
+더 상세한 디바이스의 Size Class는 H.I.G에서 확인할 수 있다.
+
+<img width="698" alt="스크린샷 2021-02-20 오후 4 34 03" src="https://user-images.githubusercontent.com/70311145/108587865-80060200-7399-11eb-9422-3c341dd8b9ce.png">
+
+### [Trait Collection](https://developer.apple.com/documentation/uikit/uitraitcollection)
+
+Size Class 보다 더 상세학게 실행환경을 구분할 때 사용하며
+
+ios 앱이 실행하는 환경에 대한 다양한 정보를 담고있다.
+
+```swift
+UITraitCollection
+UITraitEnvironment
+```
