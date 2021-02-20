@@ -254,3 +254,104 @@ ios 앱이 실행하는 환경에 대한 다양한 정보를 담고있다.
 UITraitCollection
 UITraitEnvironment
 ```
+
+---
+
+인터페이스 빌더 아래쪽을 보면 View as가 있는데 디바이스와 Size Class가 표시된다.
+
+w는 Horizontal Size Class이고, h는 vertical Size Class를 뜻한다.
+
+C는 Compact, R은 Regular을 뜻한다.
+
+<img width="847" alt="스크린샷 2021-02-20 오후 5 18 14" src="https://user-images.githubusercontent.com/70311145/108589021-a5960a00-739f-11eb-81a9-e98c471c48da.png">
+
+파일 인스펙터를 보면 Use Trait Variations가 기본적으로 체크되어있다.
+
+체크가 활성화가 되어있어야 Adaptive Layout을 구현할 수 있다.
+
+그래야 하나의 Universal Storyboard에 Size Class로 분기된 정보와
+
+Trait로 분기된 정보를 함께 저장할 수 있다.
+
+<img width="257" alt="스크린샷 2021-02-20 오후 5 24 07" src="https://user-images.githubusercontent.com/70311145/108589161-746a0980-73a0-11eb-9e1b-214dc95250ac.png">
+
+---
+
+### Adaptive Layout 실습해보기
+
+오렌지 뷰와 텍스트 뷰는 각각의 제약을 가지고 있다.
+
+현재 추가된 제약들은 어떤 Size Class에서도 종속되지 않고, 어떠한 디방이스에서도
+
+항상 동일한 레이아웃으로 지정된다.
+
+![스크린샷 2021-02-20 오후 7 49 20](https://user-images.githubusercontent.com/70311145/108593056-be5cea80-73b4-11eb-8d89-fff5fe6c10c9.png)
+
+디바이스를 LandScape 모드로 설정하면 아래와 같은 뷰가 나오는데
+
+두 뷰를 수평으로 두기 위한 작업을 하기위해 오른 쪽 하단에 vary for traits을 선택한다.
+
+<img width="606" alt="스크린샷 2021-02-20 오후 7 53 47" src="https://user-images.githubusercontent.com/70311145/108593144-5ce94b80-73b5-11eb-9f4d-125bf3b12de0.png">
+
+수평을 맞추기 위해서는 vertical size만 고려하기에 height만 체크하면
+
+아래 사진과 같이 파란색으로 강조된다. 좌측을 보면 variation이 compact 항목인
+
+디바이스만 표시되고 이 뜻은 아이폰이 Landscape일 때만 적용한다는 뜻이다.
+
+아이패드는 수직,수평이 모두 Regular이기 때문이다.
+
+![스크린샷 2021-02-20 오후 7 59 20](https://user-images.githubusercontent.com/70311145/108593270-22cc7980-73b6-11eb-90d5-45412f1475a5.png)
+
+인터페이스 빌더의 빈 공간을 클릭하면 Done Varying로 바뀌고 작업을 시작할 수 있다.
+
+이 같이 파란색인 상태에서 인터페이스 빌더에서 수행한 편집 내용은 모두 현재
+
+variation에 저장된다. 작업이 끝난 후에는 Done Varying을 꼭 클릭하여 완료해야한다.
+
+<img width="101" alt="스크린샷 2021-02-20 오후 8 04 23" src="https://user-images.githubusercontent.com/70311145/108593404-d7669b00-73b6-11eb-8d8f-57faeff28b09.png">
+
+variation상타에서 제약을 바꾸기 위해 기존에 있던 제약을 삭제하게 되면
+
+기존의 제약과 다르게 반투명 색깔로 비활성화가 된다.
+
+<img width="259" alt="스크린샷 2021-02-20 오후 8 07 13" src="https://user-images.githubusercontent.com/70311145/108593481-3e844f80-73b7-11eb-83d5-1f42e5911e8a.png">
+
+기존에 수정해 줘양할 제약들을 비활성화 한 상태에서 새로운 제약을 주고 Done버튼을 클릭하면
+
+각각의 모드에서 서로다른 UI를 줄 수 있다.
+
+<img width="266" alt="스크린샷 2021-02-20 오후 8 12 26" src="https://user-images.githubusercontent.com/70311145/108593606-fa457f00-73b7-11eb-94b0-e35b45063bb5.png">
+<img width="453" alt="스크린샷 2021-02-20 오후 8 12 30" src="https://user-images.githubusercontent.com/70311145/108593610-fca7d900-73b7-11eb-81f6-8a8da0e56ca1.png">
+
+오렌지 뷰의 width 제약을 선택하고 인스펙터를 보면 hC - Installed가 체크되어 있다.
+
+'vertical size가 compact 일때 적용되는 항목'이라는 뜻이다.
+
+위에 체크되어있지 않은 Installed는 그 이외의 나머지 항목을 뜻한다.
+
+다른 제약들도 인스펙터에서 어떤 항목이 체크되어 있는지 확인할 수 있다.
+
+왼쪽에 + 또는 x를 통해서 variation을 추가하거나 삭제할 수도 있다.
+
+<img width="254" alt="스크린샷 2021-02-20 오후 8 15 44" src="https://user-images.githubusercontent.com/70311145/108593663-6cb65f00-73b8-11eb-9dde-0ec57017958f.png">
+
+기존에 있던 variation을 삭제하고 +를 눌러보면 variation을 설정할 수 있는 팝업이 표시된다.
+
+<img width="459" alt="스크린샷 2021-02-20 오후 8 20 05" src="https://user-images.githubusercontent.com/70311145/108593777-08e06600-73b9-11eb-8a2f-2be392089785.png">
+
+vertical size만 고려하면 되기에 height만 compact 모드로 설정하고
+
+나머지는 Any로 설정 후 Add variation을 하게되면
+
+처음 실습했던 파란색 화면이 뜨고 제약을 비활성화하고,, 이런 것 없이 간단히 추가할 수 있다.
+
+<img width="194" alt="스크린샷 2021-02-20 오후 8 21 20" src="https://user-images.githubusercontent.com/70311145/108593804-3d542200-73b9-11eb-8358-e7271c84e4bc.png">
+
+---
+
+variation을 추가하거나 편집하는 기술은 adaptive layout에서 가장 중요한 기술이다.
+
+실습에서 첫번째로 했던 방법은 편집내용이 광범위한 경우에 편리하다.
+
+두번째로 인스펙터에서 variation을 추가하는 방법은 개별 항목별로 추가하거나 삭제할 때 편리하다.
