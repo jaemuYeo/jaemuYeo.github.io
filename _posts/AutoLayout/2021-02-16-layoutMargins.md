@@ -129,3 +129,77 @@ Leading과 Trailing은 5보다 큰 20으로 되어있는 것을 볼 수 있다.
 이 값은 루트뷰의 minimum margins이다. Minimum margins보다 작은 값을 설정하면
 
 설정된 margins 대신 minimum margins이 설정된다.
+
+그 이유는 루트뷰의 내용이 적절히 표시되도록 보장하기 위해서이다.
+
+minimum margins 대신 직접 입력한 margins를 사용하려면
+
+VC가 minimum margins을 사용하지 않도록 설정해야 한다.
+
+<img width="446" alt="스크린샷 2021-02-19 오후 10 21 23" src="https://user-images.githubusercontent.com/70311145/108509634-d115e780-7300-11eb-81ff-a0d85e53e2b6.png">
+
+ios11부터 지원하기 때문에 배포상태에 따라 분기를 해주어야 한다.
+
+---
+
+## Layout Guides
+
+ios11 이후 VC는 풀 스크린 방식을 사용한다. 시스템 뷰가 VC위에 표시되면서
+
+뷰와 시스템 뷰가 겹치지 않게 하는 것이 중요해졌다.
+
+레이아웃 가이드는 이러한 문제를 해결하기 위해 도입되었다.
+
+Safe Layout Guides를 현재는 사용중이다.
+
+파일 인스펙터를 보면 기본으로 Use Safe Area Layout Guides가 체크되어있다.
+
+<img width="257" alt="스크린샷 2021-02-20 오전 1 19 09" src="https://user-images.githubusercontent.com/70311145/108531099-aab07600-7319-11eb-96e0-88bd5e882ab5.png">
+
+Safe Layout Guides와 이 전 Layout Guides는 두가지 차이점이 있다.
+
+첫번째 차이점은 Layout Guides는 VC의 속성이었지만 Safe Layout Guides는 View의 속성이다.
+
+도큐먼트 아웃라인을 보면 Safe Area가 자동으로 추가되어 있다!
+
+<img width="263" alt="스크린샷 2021-02-20 오전 1 22 10" src="https://user-images.githubusercontent.com/70311145/108531482-1266c100-731a-11eb-968a-95574c91339c.png">
+
+Use Safe Area Layout Guides의 체크에 따라 달라지는 것을 볼 수 있다.
+
+<img width="330" alt="스크린샷 2021-02-20 오전 1 24 37" src="https://user-images.githubusercontent.com/70311145/108531790-712c3a80-731a-11eb-8f45-065d16e1bade.png">
+
+<img width="342" alt="스크린샷 2021-02-20 오전 1 24 43" src="https://user-images.githubusercontent.com/70311145/108531800-738e9480-731a-11eb-976e-0f6609e4f234.png">
+
+두번째 차이점은 가이드의 영역이다. Safe Area는 Top과 Bottom으로 구분되지않은 하나의 영역이다.
+
+Safe Area를 사용하는 경우에는 이전 버전과의 호완성을 유지한다.
+
+ios11을 기준으로 이전 버전에는 Layout Guides로 자동으로 변환된다.
+
+인터페이스 빌더에서는 오류없이 실행이 되지만 코드로 제약을 추가할 때에는 버전에 적합한 가이드를 사용해야 한다.
+
+<img width="958" alt="스크린샷 2021-02-20 오전 1 36 33" src="https://user-images.githubusercontent.com/70311145/108533218-14318400-731c-11eb-90f5-73ef8787a75a.png">
+
+**Layout Margins과 Safe Area 변경 될 때 활용할 수 있는 메서드**
+
+```swift
+layoutMarginsDidChange() // 뷰에 레이아웃 margins이 변경 될 때마다 호출
+
+safeAreaInsetsDidChange() // SafeArea의 크기가 변경 될 때마다 호출
+
+class EventsViewController: UIViewController {
+  // 루트 뷰의 margins이 변경 될 때마다 호출
+  override func viewLayoutMarginsDidChange(){
+    super.viewLayoutMarginsDidChange()
+  }
+  // 루트 뷰의 Safe Area Inset이 변경 될 때마다 호출
+  override func viewSafeAreaInsetsDidChange() {
+    super.viewSafeAreaInsetsDidChange
+  }
+
+}
+```
+
+---
+
+## Adaptive Layout
