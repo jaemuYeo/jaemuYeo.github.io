@@ -1,6 +1,5 @@
 ---
-
-title: "Swift 문법 공부"
+title: "공식문서로 하는 Swift 문법 공부"
 
 layout: archive
 
@@ -9,18 +8,11 @@ permalink: categories/swift
 author_profile: true
 
 sidebar_main: true
-
 ---
-
-
 
 <!-- 공백이 포함되어 있는 카테고리 이름의 경우 site.categories.['a b c'] 이런식으로! -->
 
-
-
-***
-
-
+---
 
 {% assign posts = site.categories.swift %}
 
