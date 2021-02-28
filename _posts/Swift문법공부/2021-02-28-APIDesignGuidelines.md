@@ -5,7 +5,7 @@ excerpt: "공식문서 공부하기"
 categories:
   - swift
 tags:
-  - function
+  - 디자인 가이드
 last_modified_at: 2021-02-28
 ---
 
