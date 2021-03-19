@@ -18,9 +18,9 @@ last_modified_at: 2021-03-18
 
 # [NotificationCenter](https://developer.apple.com/documentation/foundation/notificationcenter)
 
-등록 된 관촬자(Observer)에게 정보를 브로드 캐스트 할 수 있는 Notification dispatch 메커니즘이다.
+등록 된 관찰자(Observer)에게 정보를 브로드 캐스트 할 수 있는 Notification dispatch 메커니즘이다.
 
-NotificationCenter에 등록된 이벤트가 발생하면 해당 이벤트들으ㅔ 대한 행동을 취한다.
+NotificationCenter에 등록된 이벤트가 발생하면 해당 이벤트들에 대한 행동을 취한다.
 
 앱 내에서 아무곳에서 메세지를 던지면 앱 내의 아무곳에서 이 메세지를 받을 수 있게 해주는 역할을한다.
 
@@ -34,7 +34,7 @@ NotificationCenter에 등록된 이벤트가 발생하면 해당 이벤트들으
 
 싱글 브로드캐스팅이나 메서드를 동시에 알리는 데 도움이 되지 않는다.
 
-**NotificationCenter의 몇 가지 장점**
+### NotificationCenter의 몇 가지 장점
 
 - 한 클래스에서 여러 클래스로 싱글을 관찰하고 브로드캐스팅하는 데 도움이 된다.
 
@@ -128,7 +128,7 @@ Notification Key를 정의하면 된다. 현업 프로젝트에서 수동으로 
 ```swift
 extension Notification.Name {
     static var loginSusccess: Notification.Name {
-        return .init(rawValue: "UseLogin.success")
+        return .init(rawValue: "UserLogin.success")
     }
     static var verifyUserSession: Notification.Name {
         return .init(rawValue: "VerifyUser.session")
@@ -136,9 +136,9 @@ extension Notification.Name {
 }
 ```
 
-### Use Case
+## Use Case
 
-위에 정의한 코드를 통해 `NSNotification.Name("com.user.login.success")`대신
+위에 정의한 코드를 통해 `Notification.Name("com.user.login.success")`대신
 
 간한하게 `.loginSuccess`를 작성할 수 있다.
 
@@ -176,7 +176,7 @@ class LoginManager: NSObject {
 }
 ```
 
-> Objuct와 UserInfo를 동시에 보내는 방법. (차이점을 명확하게 확인 할 수 있다.)
+> Object와 UserInfo를 동시에 보내는 방법. (차이점을 명확하게 확인 할 수 있다.)
 
 ```swift
 @objc func loginSuccess(_ notification: Notification) {
